@@ -46,3 +46,6 @@ release/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# ===== 压缩率实测输出 =====
+test/ratio_out/
