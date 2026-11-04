@@ -33,8 +33,14 @@ mobile/android/local.properties
 test/*.epub
 test/*.png
 test/out_*/
+test/out*/
 test/tool_out/
 test/downloads_tools/
+test/*.txt
+test/*.json
+
+# ===== 打包产物（走 Release，不进仓库）=====
+release/
 
 # ===== 系统文件 =====
 .DS_Store
