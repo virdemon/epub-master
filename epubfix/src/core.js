@@ -837,6 +837,84 @@
     }
   }
 
+  /*
+   * 一句话一段 → 合并回正常段落。
+   *
+   * 很多机翻站的排版是"每句一个 <p>"，一段只有十几个字。上面那些逻辑
+   * 都不会碰它（每段都完整、都有句末标点），结果就是正文缩进是对的、
+   * 但一屏只有八九行，读两页就得喘口气。
+   *
+   * 这里把连续的、短的、纯叙述的段接起来。规则只做加法，不做判断：
+   *   - 对话一律独立（以引号、破折号开头），永远不参与合并
+   *   - 带图片 / <br> / 嵌套段 / id / class / 居中右对齐的段，直接断开
+   *   - 单段超过 SHORT_PARA_MAX 字的，不合并
+   *   - 合并后的段不超过 MERGED_PARA_MAX 字，到了就另起一段
+   *
+   * 宁可少合并，也不能把书改乱：判不准的地方一律断开。
+   */
+  var SHORT_PARA_MAX = 44;
+  var MERGED_PARA_MAX = 180;
+  var DIALOG_HEAD = /^[\s\u3000]*[“”「」『』"'“‘—]/;
+  var PARA_END = /[。！？…；!?;:]["'”』」]?$/;
+
+  function mergeShortParagraphs(container, ctx) {
+    var kids = Array.prototype.slice.call(container.childNodes);
+    var run = [];
+    var runLen = 0;
+    var i;
+
+    function flush() {
+      if (run.length >= 2) {
+        var head = run[0];
+        for (var k = 1; k < run.length; k++) {
+          var next = run[k];
+          while (next.firstChild) head.appendChild(next.firstChild);
+          if (next.parentNode) next.parentNode.removeChild(next);
+        }
+        var cls = (head.getAttribute('class') || '').trim();
+        if (cls.indexOf('ef-p') < 0) {
+          head.setAttribute('class', (cls ? cls + ' ' : '') + 'ef-p');
+        }
+        ctx.report.mergedShortParagraphs += run.length - 1;
+      }
+      run = [];
+      runLen = 0;
+    }
+
+    for (i = 0; i < kids.length; i++) {
+      var n = kids[i];
+      // 段落之间的换行/缩进会变成空白文本节点，不能让它把连续段落掰开
+      if (n.nodeType === 3) {
+        if (/\S/.test(n.nodeValue || '')) flush();
+        continue;
+      }
+      if (n.nodeType !== 1 || localTag(n) !== 'p') { flush(); continue; }
+      if (n.getAttribute('id')) { flush(); continue; }
+      if (n.getElementsByTagName('img').length) { flush(); continue; }
+      if (n.getElementsByTagName('svg').length) { flush(); continue; }
+      if (n.getElementsByTagName('br').length) { flush(); continue; }
+      if (n.getElementsByTagName('p').length) { flush(); continue; }
+
+      var cls2 = (n.getAttribute('class') || '').trim();
+      if (cls2 && cls2.replace(/\bef-p\b/g, '').trim()) { flush(); continue; }
+
+      var align = (n.getAttribute('align') || '').toLowerCase();
+      if (align === 'center' || align === 'right') { flush(); continue; }
+      if (/text-align\s*:\s*(center|right)/i.test(n.getAttribute('style') || '')) { flush(); continue; }
+
+      var txt = (n.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!txt) { flush(); continue; }
+      if (DIALOG_HEAD.test(txt)) { flush(); continue; }
+      if (txt.length > SHORT_PARA_MAX) { flush(); continue; }
+      if (!PARA_END.test(txt)) { flush(); continue; }
+
+      if (run.length && runLen + txt.length > MERGED_PARA_MAX) flush();
+      run.push(n);
+      runLen += txt.length;
+    }
+    flush();
+  }
+
   function rebuildParagraphs(container, ctx) {
     var doc = container.ownerDocument;
     var kids = Array.prototype.slice.call(container.childNodes);
@@ -1853,6 +1931,7 @@
       rebuiltParagraphs: 0,   // 由"文字 + <br>"重建出来的段落数
       splitFromBreaks: 0,     // 从"一个 <p> 塞满 <br>"里拆出来的额外段落数
       mergedLines: 0,         // 被硬折行截断、又接回同一段的半句数
+      mergedShortParagraphs: 0, // 一句话一段的书里，被合并掉的碎段数
       sourceChars: 0,         // 原书正文字符数，用来核对有没有丢字
       convertedBlocks: 0,
       orphanFiles: 0,
@@ -2244,6 +2323,8 @@
         if (!policy.preserveCss) convertTextBlocks(body, ctx);
         else report.unconvertedBlocks += countTextBlocks(body);
         tidyRecursive(body, ctx);
+        // 段落结构稳定之后再合并碎段：前面几步都可能拆出新段落
+        if (!policy.preserveCss) mergeShortParagraphs(body, ctx);
       }
       // 重复图片：在这里按阅读顺序扫一遍。要在清理之后、切章之前做——
       // 此时段落结构已经稳定，删掉一个 <img> 连带的空段落能被一起清干净。
@@ -2620,12 +2701,14 @@
     if (totalP === 0) {
       note('p', '段落结构', 'warn',
         '输出的正文里没有任何 <p> 段落，阅读器无法给正文加段距和首行缩进，会挤成一块。');
-    } else if (newP || splitP) {
+    } else if (newP || splitP || report.mergedShortParagraphs) {
+      var pBits = [];
+      if (newP) pBits.push('重建 ' + newP + ' 个段落');
+      if (splitP) pBits.push('从挤在一起的段落里拆出 ' + splitP + ' 段');
+      if (report.mergedLines) pBits.push('把 ' + report.mergedLines + ' 处被硬折行截断的半句接回同一段');
+      if (report.mergedShortParagraphs) pBits.push('把 ' + report.mergedShortParagraphs + ' 个一句话一段的碎段合并成正常段落');
       note('p', '段落结构', 'fixed',
-        '原书正文没有真正的段落（只靠 <br> 硬换行）' +
-        (newP ? '，已重建 ' + newP + ' 个段落' : '') +
-        (splitP ? '、从挤在一起的段落里拆出 ' + splitP + ' 段' : '') +
-        (report.mergedLines ? '，另外把 ' + report.mergedLines + ' 处被硬折行截断的半句接回同一段' : '') +
+        '原书段落结构不符合阅读习惯：' + pBits.join('，') +
         '。输出共 ' + totalP + ' 个段落。');
     } else {
       note('p', '段落结构', 'ok', '原书段落完整，输出保留 ' + totalP + ' 个段落，没有合并或拆散。');

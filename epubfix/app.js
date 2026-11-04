@@ -388,7 +388,8 @@
 
     el.textContent = '约 ' + fmtBytes(est);
     var lines = [];
-    lines.push('区间 ' + fmtBytes(est * 0.85) + ' – ' + fmtBytes(est * 1.2));
+    // 图片本来就没压过的书，实际输出可能比这里高两三倍；区间给宽一点，别把话说死
+    lines.push('图片压缩比因书而异：' + fmtBytes(est * 0.55) + ' – ' + fmtBytes(est * 2.2));
 
     if (state.volume && state.target !== '0') {
       var limit = state.target === 'auto' ? 100 * 1048576 : Number(state.target) * 1048576;
@@ -1026,6 +1027,7 @@
     var fix = (rep.rebuiltParagraphs || 0) + (rep.convertedBlocks || 0);
     var desc = '整理出 <b>' + (rep.chapters || 0) + '</b> 章，来自 ' + (rep.sourceDocuments || rep.chapters || 0) + ' 个正文文件。';
     if (fix) desc += '重建 <b>' + fix + '</b> 处段落结构（' + (rep.rebuiltParagraphs || 0) + ' 处换行合段、' + (rep.convertedBlocks || 0) + ' 处 div 转 p）。';
+    if (rep.mergedShortParagraphs) desc += '另外把 <b>' + rep.mergedShortParagraphs + '</b> 个"一句话一段"的碎段接成了正常段落。';
     if (rep.removedEmptyParagraphs) desc += '删除 <b>' + rep.removedEmptyParagraphs + '</b> 个空段落。';
     desc += ' 文本在 ZIP 里本来就被压得很狠，重新打包后体积变化通常不大。';
     return catBlock('文本', '已重排', 'tag-do', before - after, desc, catBars(before, after, CAT_META.文本.color));

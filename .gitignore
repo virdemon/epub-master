@@ -49,3 +49,5 @@ desktop.ini
 
 # ===== 压缩率实测输出 =====
 test/ratio_out/
+test/demo_out/
+test/preview/
