@@ -1,1 +1,590 @@
-PGRpdiBhbGlnbj0iY2VudGVyIj4NCg0KIyDwn5OaIEVQVUIgTWFzdGVyDQoNCioq57uZ44CM5aGe5ruh5o+S5Zu+55qEIEVQVULjgI3ph4/ouqvlrprlgZrnmoTovbvph4/lt6XlhbcqKg0KDQrljovkvZPnp68gwrcg5L+u57uT5p6EIMK3IOi9rOagvOW8jyDCtyDmjpLmrrXokL0gwrcg5ouG5YiG5Y23DQoNClshW0xpY2Vuc2VdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvbGljZW5zZS1NSVQtYmx1ZS5zdmcpXShMSUNFTlNFKQ0KIVtQbGF0Zm9ybV0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9iYWRnZS9wbGF0Zm9ybS1XaW5kb3dzJTIwJTdDJTIwQW5kcm9pZC1icmlnaHRncmVlbikNCiFbT2ZmbGluZV0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9iYWRnZS8xMDAlMjUtb2ZmbGluZS1zdWNjZXNzKQ0KIVtObyUyMFVwbG9hZF0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9iYWRnZS/mlofku7bkuI3lh7rmnKzmnLotb3JhbmdlKQ0KDQoqKuS4jeiBlOe9kSDCtyDkuI3kuIrkvKAgwrcg5LiN5pS55Y6f5paH5Lu2KioNCg0KPC9kaXY+DQoNCi0tLQ0KDQojIyDwn42cIOi/meeOqeaEj+WEv+aYr+aAjuS5iOadpeeahA0KDQrlhYjor7Tnu5PorrrvvJrooqvkuIDmnKzkuabpgLznmoTjgIINCg0K5L2c6ICF5Zac5qyi55yL6YKj56eN5bim5o+S5Zu+55qE572R57uc5bCP6K+077yI5L2g5Lus6YO95oeC5piv5ZOq57G777yJ44CC6L+Z57G75Lmm5Yir55qE5LiN6K+077yM5YWJ5paH5Lu25ZKM5o6S54mI5bCx5aSf6K6p5Lq65aS055a877yaDQoNCi0gKirkvZPnp6/lpKcqKu+8muWHoOeZviBNQiDmmK/luLjmgIHvvIzlm77lpJrnmoTog73liLDlh6DkuKogR+OAguaJi+acuuaJjSAxMjhH77yM5LiA5pys5Lmm5bCx5Y2g5Y675LiA5Z2X77yM6K+05Ye65Y676Ieq5bex6YO95LiN5L+h44CCDQoNCi0gKirlm77niYfph43lpI0qKu+8muWQjOS4gOW8oOWbvuaNouS4quWQjeWtl+WtmOWlveWHoOS7ve+8jOato+aWh+mHjOi/mOWPjeWkjeeUqOWQjOS4gOW8oOOAguepuumXtOa1qui0ueaYr+Wwj+S6i++8jOe/u+edgOe/u+edgOWPiOWGkuWHuuWQjOS4gOW8oOWbvu+8jOaJjeaYr+ecn+eahOeDpuOAgg0KDQotICoq5o6S54mI5LmxKirvvJrpu5jorqTpmIXor7vvvIzkuIDooYzlrZflsYXkuK3po5jnnYDvvIzmrrXkuI7mrrXkuYvpl7TnqbrkuIDlpKfniYfvvIzkuIDlsY/msqHlh6DooYzvvIzkuZ/msqHmnInpppbooYznvKnov5vjgILor7votbfmnaXkuI3lg4/kuabvvIzlg4/lnKjnnIsgUFBU44CCDQoNCi0gKirmiZPkuI3lvIAqKu+8mm1hbmlmZXN0IOWwkeeZu+iusOWHoOW8oOWbvu+8jOaIluiAhei3r+W+hOWGmemUmeS4gOS4quWtl+avje+8jOmYheivu+WZqOWwseaKpeOAjOatpOaWh+S7tuacquWIl+WcqCBtYW5pZmVzdCDmlofku7bkuK3jgI3vvIzkuabnm7TmjqXlup/kuobvvIzkvaDov5jkuI3nn6XpgZPpl67popjlh7rlnKjlk6rjgIINCg0K6L+Z5Lqb5q+b55eF77yM5biC6Z2i5LiK5rKh5pyJ5LiA5Liq5bel5YW36IO95LiA5qyh5YWo6Kej5Yaz44CC6KaB5LmI5Y+q6IO95Y6L5Zu+77yM6KaB5LmI5Y+q6IO96L2s5qC85byP77yM6KaB5LmI5b6X5Lyg5Yiw572R56uZ5Zyo57q/5aSE55CG4oCU4oCU6Ieq5bex55qE5Lmm77yM6LCB5pS+5b+D5Lyg5LiK5Y675ZWK44CCDQoNCuS6juaYr+i/meS4quWujOWFqOS4jeS8mue8lueoi+eahOS9nOiAhe+8jOaJvuS6huS4qiBBSe+8jOS4gOeJiOS4gOeJiOWcsOivle+8muaLv+ecn+S5pui3ke+8jOWHuumXrumimOWwseaUue+8jOaUueWujOWGjei3keOAguS4remXtOaOqOe/u+mHjeadpei/h+WNgeWHoOWbnu+8jOacgOaDqOeahOS4gOasoeWOi+WujOWPkeeOsOaPkuWbvuWFqOayoeS6huOAgg0KDQrnjrDlnKjmgLvnrpfot5HpobrkuobjgILmg7PnnYDogq/lrprkuI3mraLmiJHkuIDkuKrkurrljaHlnKjov5nvvIzlsLHmlL7lh7rmnaXnu5nlpKflrrbnlKjjgIINCg0KLS0tDQoNCiMjIOKcqCDlroPog73lubLku4DkuYgNCg0KPHRhYmxlPg0KPHRyPg0KPHRkIHdpZHRoPSI1MCUiIHZhbGlnbj0idG9wIj4NCg0KIyMjIPCfl5zvuI8g5oqK5L2T56ev5Y6L5LiL5p2lDQotIOWbvueJh+mAkOW8oOmHjee8luegge+8jOacgOmVv+i+uSA2MDAgfiAzMDAwIHB4IOmaj+S+v+iwgw0KLSBKUEVHIOi0qOmHjyAwLjU1IH4gMC45OCDlj6/osIMNCi0g5Lmf5Y+v5Lul55u05o6l6K+044CM5oiR6KaBIDUgTUIg5Lul5YaF44CN77yM5Y6L5LiN5Yiw5bCx6Ieq5Yqo5YiG5Y23DQoNCiMjIyDwn6e5IOa4heaOiemHjeWkjeWbvueJhw0KLSBTSEEtMjU2IOWTiOW4jCArIOWDj+e0oOe6p+WPjOmHjeavlOWvuQ0KLSDlj6rliKAqKuehruWumuS4gOaooeS4gOagtyoq55qE77yM6ZW/5b6X5YOP5L2G5LiN5LiA5qC355qE5LiA5b6L5L+d55WZDQotIOWIoOeahOaYr+mHjeWkjeaYvuekuu+8jOS4jeegtOWdj+S7u+S9leW8leeUqA0KDQojIyMg8J+UpyDkv67lpb3miZPkuI3lvIDnmoTkuaYNCi0g6Ieq5Yqo6KGl5YWoIG1hbmlmZXN0IOe8uuWksemhue+8iOWwseaYr+mCo+S4quOAjOacquWIl+WcqCBtYW5pZmVzdCDkuK3jgI3vvIkNCi0g5L+u5q2j5oKs56m65byV55So44CB5ZG95ZCN56m66Ze06ZSZ6K+v44CB6ZSZ6K+v55qE55uu5b2V6ZO+5o6lDQotIOS/ruWujOi/mOS8mumHjeaWsOino+aekOS4gOmBjei+k+WHuuaWh+S7tu+8jOehruiupOecn+eahOiDveaJk+W8gA0KDQo8L3RkPg0KPHRkIHdpZHRoPSI1MCUiIHZhbGlnbj0idG9wIj4NCg0KIyMjIPCfk5Ag5o6S54mI5o6S5oiQ6IO96K+755qE5qC35a2QDQotIOato+aWh+W3puWvuem9kOOAgTJlbSDpppbooYznvKnov5vjgIHooYzpq5ggMS43NeOAgeautei3nSAwLjZlbQ0KLSDmoIfpopjlsYXkuK3jgIHliqDnspfjgIHkuI3nvKnov5sNCi0g5Zu+54mHIC8g6KGo5qC8IC8g5byV55SoIC8g6K+X5q2M5Y2V54us5L+d5oqk77yM5LiN6Lef552A5q2j5paH57yp6L+bDQoNCiMjIyDwn5SEIOagvOW8j+aDs+aNouWwseaNog0KLSDovpPlh7ogKipFUFVCIDIuMCAvIDMuMCAvIOi3n+WOn+S5puS4gOiHtCoqDQotIOS4jeaYr+aUueeJiOacrOWPt++8jOaYr+aVtOWll+mHjeW7uu+8mk9QRuOAgeebruW9leOAgeaWh+aho+exu+Weiw0KLSDmjaLlrozoh6rmo4Dnu5PmnoTvvIzpgJrov4fmiY3nu5nkvaANCg0KIyMjIPCfkYAg5aSE55CG5YmN5YWI55yL5riF5qWaDQotIOWGhee9rumYheivu+WZqO+8jOS4jeW8gOWIq+eahOi9r+S7tuWwseiDveivuw0KLSDmiYDmnInmj5Llm77mjKjkuKrliJflh7rmnaXvvIzmoIflsLrlr7jjgIHkvZPnp6/jgIHlh7rlpIQNCi0g5aSE55CG5YmN5ZCOKirlkIzkuIDnq6DlubbmjpLlr7nmr5QqKu+8jOaUueayoeaUueWlveiHquW3seWIpOaWrQ0KDQo8L3RkPg0KPC90cj4NCjwvdGFibGU+DQoNCjxkZXRhaWxzPg0KPHN1bW1hcnk+PGI+8J+nsCDov5jmnInkuIDkupvljZXngrnlt6XlhbfvvIjngrnlvIDnnIvvvIk8L2I+PC9zdW1tYXJ5Pg0KDQo8YnI+DQoNCnwg5bel5YW3IHwg5bmy5LuA5LmIIHwNCnwgLS0tIHwgLS0tIHwNCnwg8J+WvO+4jyDlm77niYfkvJjljJYgfCDlj6rnnIvlm77niYfvvJrljovnvKnjgIHovaznoIHjgIHpgJDlvKDlr7nmr5Tlj5jljJYgfA0KfCDwn5S3IFNWRyDmo4Dmn6UgfCDliJflh7rmiYDmnIkgU1ZHIOi1hOa6kO+8jOWBmuaXoOaNn+eyvueugCB8DQp8IPCflKcg57uT5p6E5qOA5p+l5LiO5L+u5aSNIHwg5qOA5p+lIFpJUOOAgU9QRuOAgeW8leeUqOOAgVhIVE1M77yM5LiA6ZSu5L+u5aSNIHwNCnwg8J+Pt++4jyDlhYPmlbDmja7nvJbovpEgfCDmlLnkuablkI3jgIHkvZzogIXjgIHor63oqIDjgIHlh7rniYjkv6Hmga/vvIzmraPmlofkuIDkuKrlrZfkuI3liqggfA0KfCDwn5OVIOWwgemdouaPkOWPliB8IOWvvOWHuuS5pumHjOeahOWwgemdouWOn+WbviB8DQoNCiFb5bel5YW3566xXShkb2NzL2ltYWdlcy9wYy10b29scy5wbmcpDQoNCuS4gOasoeS4ouS4gOWghuS5pui/m+WOu+aOkumYn+WkhOeQhu+8jOmAguWQiOaVtOeQhuaVtOS4quS5puW6k++8mg0KDQohW+aJuemHj+WkhOeQhl0oZG9jcy9pbWFnZXMvcGMtYmF0Y2gucG5nKQ0KDQohW+iuvue9rl0oZG9jcy9pbWFnZXMvcGMtc2V0dGluZ3MucG5nKQ0KDQo8L2RldGFpbHM+DQoNCi0tLQ0KDQojIyDwn46sIOWunuW9le+8muS4gOacrCAxMDEgTUIg55qE5Lmm77yMMTIg56eSDQoNCj4g5LiL6Z2i5q+P5LiA5q2l6YO95piv55yf6LeR55qE77yM5rKh5pyJ5pGG5ouN44CC55So55qE5piv5LiA5pysICoqMTAxLjY5IE1CIC8gMzIyIOeroCAvIDEwMi42IOS4h+WtlyAvIDQzOCDlvKDmj5Llm74qKiDnmoTpn6nlm73nvZHmlofmnLrnv7vmnKzjgIINCj4NCj4g5pyJ5Liq57uG6IqC5b6X6K+05riF5qWa77yaKirov5nmnKzkuabmmK/ku47nvZHpobXkuIvnmoTvvIzmiYDku6Ui5Y+q5pyJIiAxMDEgTULjgIIqKiDmtY/op4jlmajnu5nnmoTniYjmnKzvvIzlm77niYfpgJrluLjlt7Lnu4/ooqvnvZHnq5nljovov4fkuIDpgZPjgILlkIzkuIDmnKzkuablpoLmnpzmmK/lnKjmiYvmnLogQXBwIOmHjOS4i+eahOWOn+eJiO+8jCoq5L2T56ev5pmu6YGN5ZyoIDEgR0Ig5Lul5LiKKiog4oCU4oCUIOWtl+i/mOaYr+mCo+S6m+Wtl+OAgeWbvui/mOaYr+mCo+S6m+Wbvu+8jOWPquaYr+WbvuaYr+ayoee8qei/h+eahOWOn+WbvuOAgg0KDQojIyMg4pGgIOaLlui/m+WOu++8jOWug+WFiOe7meS9oOS4gOS7veS9k+ajgOaKpeWRig0KDQohW+WvvOWFpeS5puexjV0oZG9jcy9pbWFnZXMvZGVtby0yLWltcG9ydC5wbmcpDQoNCjMyMiDnq6DjgIExMDIuNiDkuIflrZfjgIE0Mzgg5byg5Zu+5Y2g5LqGIDk3LjY4IE1C44CB5qCH552AIEVQVUIgMy4w77yM5peB6L655oyC552A57qi5qCH77yaKioyIOS4que7k+aehOmXrumimCoq44CCDQoNCj4g5LuA5LmI6Zeu6aKY77yf54K544CM57uT5p6E5qOA5p+l44CN5bCx6IO955yL5YiwIOKAlOKAlCBtYW5pZmVzdCDlj6rnmbvorrDkuoYgMzI1IOadoe+8jOWMhemHjOWNtOaciSA3NzAg5Liq5paH5Lu244CCKio0Mzgg5byg5Zu+5pyJ5LiA5aSn5Y2K5rKh6KKr5YaZ6L+bIG1hbmlmZXN0KirvvIzov5nmraPmmK/pmIXor7vlmajmiqXjgIzmnKrliJflnKggbWFuaWZlc3Qg5paH5Lu25Lit44CN55qE5Y6f5Zug44CCDQoNCiMjIyDikaEg6YCJ6L6T5Ye65qC85byP77yI6L+Z5LiA5q2l5bu66K6u5omL5Yqo5pS55oiQIEVQVUIgMi4w77yJDQoNCiFb6L6T5Ye65qC85byPXShkb2NzL2ltYWdlcy9kZW1vLTMtZm9ybWF0LnBuZykNCg0K6buY6K6k5piv44CM5L+d55WZ5Y6f5Lmm54mI5pys44CN77yM5Lmf5Y+v5Lul55u05o6l54K5ICoqRVBVQiAyLjAqKuOAguS4uuS7gOS5iOW7uuiurumAiSAy77yM5LiL6Z2i5pyJ5Y2V54us5LiA6IqC44CCDQoNCuWQjOS4gOS4qumdouadv+mHjOi/mOiDveiwg++8muWbvueJh+acgOmVv+i+ueOAgUpQRUcg6LSo6YeP44CB5piv5ZCm5riF6YeN5aSN5Zu+44CB5piv5ZCm5Yig5rKh6KKr5byV55So55qE6LWE5rqQ44CCDQoNCiMjIyDikaIg5byA5Y6L77yM6L+b5bqm5piv55yf55qEDQoNCiFb5aSE55CG5LitXShkb2NzL2ltYWdlcy9kZW1vLTQtcHJvZ3Jlc3MucG5nKQ0KDQpg5q2j5Zyo5LyY5YyW5Zu+54mHIMK3IDE4JSDCtyA3OS80MzggwrcgaW1nXzAwNzkuanBnYA0KDQrkuI3mmK/ovazlnIjpqpfkurrvvIzlpITnkIbliLDlk6rlvKDlm77pg73lhpnnnYDjgILpmo/ml7blj6/ku6Xlj5bmtojjgIINCg0KIyMjIOKRoyDlh7rnu5PmnpzvvIzmr4/kuKrmlbDlrZfpg73mnInlh7rlpIQNCg0KIVvlpITnkIbnu5PmnpxdKGRvY3MvaW1hZ2VzL2RlbW8tNS1yZXN1bHQtdG9wLnBuZykNCg0KPGRpdiBhbGlnbj0iY2VudGVyIj4NCg0KfCDljp/lp4vkvZPnp68gfCDlpITnkIblkI4gfCDnnIHkuIsgfCDlh4/lsJEgfCDogJfml7YgfA0KfCA6LS0tOiB8IDotLS06IHwgOi0tLTogfCA6LS0tOiB8IDotLS06IHwNCnwgKioxMDEuNjkgTUIqKiB8ICoqMzUuOTUgTUIqKiB8ICoqNjUuNzQgTUIqKiB8ICoqNjQuNiUqKiB8ICoqMTIg56eSKiogfA0KDQo8L2Rpdj4NCg0K6L6T5Ye654mI5pysICoqRVBVQiAyLjAqKu+8jOe7k+aehOiHquajgOmAmui/h++8mg0KDQo+IOaMieS9oOmAieaLqeeahCBFUFVCIDIuMCDph43mlrDnlJ/miJDkuobljIXnu5PmnoTvvIhPUEYg54mI5pys5aOw5piO44CBbWFuaWZlc3TjgIHnm67lvZXmlrnlvI/vvIhOQ1jvvInjgIHnq6DoioLmlofmoaPnsbvlnovvvInvvIzkuI3mmK/lj6rmlLnniYjmnKzlj7fjgIINCg0KIyMjIOKRpCDlvoDkuIvnv7vvvIzog73nnIvliLDnnIHlnKjlk6rlhL8NCg0KIVvph43lpI3lm77niYfmuIXnkIZdKGRvY3MvaW1hZ2VzL2RlbW8tNi1yZXN1bHQtbWlkLnBuZykNCg0K5q2j5paH6YeM5Zu+54mH5LiA5YWx6KKr5byV55SoICoqNDM4IOasoSoq77yM5Y676YeN5ZCO5YW25a6e5Y+q5pyJICoqMjcyIOW8oOS4jeWQjOeahOWbvioq77yaDQoNCi0gKirmuIXpmaTph43lpI3mmL7npLogMTY2IOWkhCoqIOKAlOKAlCDlkIzkuIDlvKDlm77lnKjmraPmlofph4zlj43lpI3lh7rnjrANCi0gKirnp7vpmaTlhpfkvZnmlofku7YgMTY2IOS4qioqIOKAlOKAlCDlkIzkuIDlvKDlm77lnKjljIXph4zlrZjkuoblpb3lh6Dku73vvIzlhoXlrrnkuIDmqKHkuIDmoLcNCi0gKirlrp7miZPlrp7nnIHkuIsgMjAuNTYgTUIqKu+8jOS4gOS4quWtl+iKgumDveayoemdoOmZjeS9jueUu+i0qOaNog0KDQrliankuIvnmoTnnIHms5XmmK/ph43nvJbnoIHvvJrlm77niYfmgLvkvZPnp68gKio5Ny42OCBNQiDihpIgMzQuMTcgTUIqKuOAguaWh+Wtl+WHoOS5juayoeWPmO+8iDMuOTAg4oaSIDMuNzUgTULvvInvvIzlm6DkuLrmloflrZflnKggWklQIOmHjOacrOadpeWwseWOi+W+l+W+iOeLoOOAgioq5Lmm55qE5L2T56ev5Yeg5LmO5YWo5Zyo5Zu+5LiKKirvvIzov5nlj6Xor53mmK/ov5nova/ku7bmiYDmnInorr7orqHnmoTlh7rlj5HngrnjgIINCg0KIyMjIOKRpSDmjpLniYjlhbzlrrnmgKfpgJDpobnmo4Dmn6UNCg0KIVvmo4Dmn6XpobldKGRvY3MvaW1hZ2VzL2RlbW8tNy1yZXN1bHQtYXVkaXQucG5nKQ0KDQoxNCDpobnvvIzmr4/kuIDpobnpg73lhpnmuIXmpZrmo4Dmn6Xkuobku4DkuYjvvJoNCg0KLSAqKuauteiQvee7k+aehCoq77ya5oqKICoqMTQ0MjYg5LiqIuS4gOWPpeivneS4gOautSLnmoTnoo7mrrXlkIjlubbmiJDmraPluLjmrrXokL0qKu+8jOi+k+WHuiA1MDg3MiDmrrUNCi0gKirph43lpI3lm77niYcqKu+8mjQzOCDlvKDph4wgMTY2IOW8oOaYr+WujOWFqOebuOWQjOeahOmHjeWkje+8jOa4heaOieWQjueVmSAyNzIg5byg77yM55yBIDIwLjU2IE1CDQotICoq5q2j5paH5a6M5pW05oCnKirvvJrljp/kuaYgMTAyNDEzMCDlrZfjgIHovpPlh7ogMTAyNDE4MiDlrZfvvIzmsqHkuKLlrZfjgIHmsqHph43lpI3jgIHmsqHnspjov54NCi0gKirnm67lvZXkuI7nq6DoioIqKu+8mjMyMyDnq6Dlhajpg6jog73lnKjnm67lvZXph4zngrnliLANCi0gKirovpPlh7rlrozmlbTmgKcqKu+8mumHjeaWsOino+aekOi+k+WHuuWMhe+8jG1hbmlmZXN0IDU5NyDmnaHlhajpg6jlrZjlnKjvvIxzcGluZSAzMjMg6aG55YWo6YOo5a+55LiKDQoNCioq5pyJ6Zeu6aKY5a6D5Lya5piO6K+077yM5rKh6Zeu6aKY5Lmf5LiN5Lya556O5oql44CCKioNCg0KLS0tDQoNCiMjIPCfk4kg6IO95Y6L5aSa5bCR77yM5Y+W5Yaz5LqO5Y6f5Zu+5pyJ5aSaIuiEjyINCg0K5ZCM5LiA5Liq6L2v5Lu244CB5ZCM5LiA5pys5Lmm77yM5Y+q5Yqo5Lik5Liq5Y+C5pWw77yI5Zu+54mH5pyA6ZW/6L65ICsgSlBFRyDotKjph4/vvInvvIznu5Pmnpzog73lt67kuInlgI3vvJoNCg0KfCDlm77niYfmnIDplb/ovrkgfCBKUEVHIOi0qOmHjyB8IOWkhOeQhuWQjiB8IOWHj+WwkSB8IOS7gOS5iOaXtuWAmeeUqCB8DQp8IDotLS06IHwgOi0tLTogfCA6LS0tOiB8IDotLS06IHwgLS0tIHwNCnwgMTYwMCBweCB8IDg1IHwgMzYuNyBNQiB8ICoqNjQuMCUqKiB8IOWOn+WbvuacrOi6q+WwseWkp++8iOm7mOiupO+8iSB8DQp8IDEwMDAgcHggfCA4MCB8IDIyLjkgTUIgfCAqKjc3LjQlKiogfCDmg7PmmI7mmL7lj5jlsI/vvIznlLvotKjlh6DkuY7kuI3liqggfA0KfCAqKjgwMCBweCoqIHwgKio3MioqIHwgKioxNC45IE1CKiogfCAqKjg1LjMlKiogfCAqKuaJi+acuueci+S5pueahOeUnOeCueahoyoqIHwNCnwgNjAwIHB4IHwgNjAgfCA5LjEgTUIgfCAqKjkxLjElKiogfCDlj6rmsYLloZ7lvpfov5vmiYvmnLogfA0KDQo+IOWQjOS4gOacrCAxMDEuNjkgTUIg55qE5Lmm5a6e5rWL77yM5q+P5qyh5a6M5pW06YeN5omT5YyFICsg6LeR5a6M6Ieq5qOA44CC5rOo5oSP56ys5LiA6KGM77yaKirpu5jorqTlj4LmlbDku4DkuYjpg73kuI3nlKjmlLnvvIzlhYjnnIEgNjQlKirjgIINCg0KIyMjIOmCo+S4uuS7gOS5iOacieeahOS5puWPqumZjSA3Je+8nw0KDQrlm6DkuLoqKuWOn+WbvuaXqeWwseiiq+S6uuWOi+i/h+S6hioq44CC55yL5Lik5pys55yf5Lmm77yaDQoNCnwgIHwg572R6aG15LyY5YyW6L+H55qE5LmmIHwg5rKh5Y6L6L+H55qE5LmmIHwNCnwgLS0tIHwgLS0tIHwgLS0tIHwNCnwg5bmz5Z2H5Y2V5bygIHwgMTQyIEtCIHwgMjI4IEtCIHwNCnwg5pyA6ZW/6L65IHwgMTA4MCBweCB8IDgzMiBweCB8DQp8IOWOn+Wbvui0qOmHjyB8IOiiq+WOi+WIsCBxODAg5bem5Y+zIHwg5o6l6L+R5Y6f55S7IHwNCnwg6buY6K6k5Y+C5pWw6IO96ZmNIHwgKio3LjclKiogfCAqKjY0LjYlKiogfA0KDQrov5nph4zmnInkuKrlj43nm7Top4nnmoTngrnvvJoqKuWDj+e0oOWwkeeahOmCo+S4quWPjeiAjOabtOWNoOWcsOaWuSoq44CCODMyIHB4IOmCo+W8oOaYryLpq5jnoIHnjoflsI/lm74i77yI5LiA5bygIDIyOCBLQu+8ie+8jDEwODAgcHgg6YKj5byg5pivIuS9jueggeeOh+Wkp+WbviLvvIjlj6rmnIkgMTQyIEtC77yJ44CCKirlhrPlrprkvZPnp6/nmoTmmK/noIHnjofvvIzkuI3mmK/lsLrlr7jjgIIqKg0KDQrmiYDku6Xov5nlpZflt6XlhbfliKTmlq3kuIDlvKDlm77lgLzkuI3lgLzlvpfljovvvIznnIvnmoTmmK8i5Y6L5a6M5Lya5LiN5Lya5Y+Y5bCPIu+8jOS4jeaYryLlg4/ntKDotoXmsqHotoXmoIci44CC5bey57uP5Y6L5Yiw5p6B6ZmQ55qE5Zu+77yM5a6D5Lya5Y6f5qC355WZ552A77yM5LiN57OK5L2g55qE55y8552b44CCDQoNCiMjIyDpgYfliLDljovkuI3liqjnmoTkuabmgI7kuYjlip4NCg0K5oqK5pyA6ZW/6L655b6A5LiL6LCD44CC5omL5py65bGP5q2j5paH5Yy65a6e6ZmF5Y+q5pyJIDQwMH41MDAg5YOP57Sg5a6977yMKio4MDAgcHgg55qE5o+S5Zu+6L+Y55WZ552A5Lik5YCN5L2Z6YePKirvvIzkuI3mlL7lpKfliLDlhajlsY/ln7rmnKznnIvkuI3lh7rlt67liKvjgILkuIrpnaLpgqPmnKwgMTAxIE1CIOeahOS5puiwg+WIsCA4MDAgcHjvvIznm7TmjqXokL3liLAgMTQuOSBNQuOAgg0KDQojIyMg6YKjIuWHoOeZviBNQiDlj5jlh6DljYEgTUIi5piv5oCO5LmI5YGa5Yiw55qEDQoNCuS4ieenje+8jOmDveS4jeelnuWlh++8mg0KDQoxLiAqKuWOn+WbvuacrOadpeWwseWkpyoqIOKAlOKAlCAzMDAwIHB4IOeahCBQTkcg5Y6f55S76ZmN5YiwIDE2MDAgcHgg55qEIEpQRUfvvIzlpKnnhLbnnIEgODAl77yM55S76LSo5Yeg5LmO55yL5LiN5Ye65p2lDQoyLiAqKuWPguaVsOWOi+W+l+eLoCoqIOKAlOKAlCDnm7TmjqXnoI3liLAgNjAwIHB4IOeUmuiHs+abtOS9ju+8jOaUvuWkp+iDveeci+WHuuezig0KMy4gKirmiorlm77liKDkuoYqKiDigJTigJQg5pyJ5Lqb5Zyo57q/5bel5YW35Y+q55WZ5paH5a2X5bGC77yM5Yeg5LiqIEcg56uL5Yi75Y+Y5YegIE1C77yM5Luj5Lu35piv5o+S5Zu+5YWo5rKh5LqGDQoNCui/meS4quW3peWFt+m7mOiupOi1sOesrOS4gOadoe+8jOesrOS6jOadoee7meS9oOa7keWdl+iHquW3semAie+8jCoq56ys5LiJ5p2h5LiN5bmyKiog4oCU4oCUIOWIoOWbvuS4jeWPq+WOi+e8qe+8jOmCo+WPq+aKiuS5puaLhuS6huWNluW6n+e6uOOAgg0KDQotLS0NCg0KIyMg8J+RgCDpooTop4jov5nlnZfvvIzmmK/nnJ/og73nnIvmuIXmpZoNCg0KIyMjIOWQjOS4gOeroO+8jOWkhOeQhuWJjSB2cyDlpITnkIblkI4NCg0K5Lik5byg6YO95pivKirlkIzkuIDkuKrpmIXor7vlmajjgIHlkIzkuIDkuKrjgIzpmIXor7vmoLflvI/jgI3jgIHlkIzkuIDnq6AqKuOAguW3ruWIq+WPquadpeiHquauteiQvee7k+aehOacrOi6q++8jOS4jeaYr+aNouS6huS4quWlveeci+eahOS4u+mimOmql+S9oOOAgg0KDQo8dGFibGU+DQo8dHI+DQo8dGQgd2lkdGg9IjUwJSIgYWxpZ249ImNlbnRlciI+DQoNCioq4p2MIOWOn+S5pioqDQoNCjxpbWcgc3JjPSJkb2NzL2ltYWdlcy9kZW1vLTEzLWJlZm9yZS5wbmciPg0KDQrkuIDlj6Xor53lsLHmmK/kuIDmrrXvvIzmrrXpl7Tnqbrlh7rlsI/ljYrooYzvvIwqKuayoeaciemmluihjOe8qei/myoq44CC55y8552b6K+75Lik5Y+l5bCx6KaB5b6A5LiL6Lez5LiA5qyhDQoNCjwvdGQ+DQo8dGQgd2lkdGg9IjUwJSIgYWxpZ249ImNlbnRlciI+DQoNCioq4pyFIOWkhOeQhuWQjioqDQoNCjxpbWcgc3JjPSJkb2NzL2ltYWdlcy9kZW1vLTEyLWFmdGVyLnBuZyI+DQoNCuefreWPpeaOpeaIkOaVtOaute+8jCoqMmVtIOmmluihjOe8qei/myoq77yM6KGM6auYIDEuOeOAguWQjOagt+S4gOWxj++8jOivu+i1t+adpeaYr+i/nui0r+eahA0KDQo8L3RkPg0KPC90cj4NCjwvdGFibGU+DQoNCuWOn+S5pumCoyA1NjU5NyDkuKrnoo7mrrXvvIzooqvlkIjlubbmjokgMTQ0MjYg5Liq77yaKirlr7nor53ku43nhLbkuIDlj6XkuIDmrrUqKu+8iOivpeaWreeahOWcsOaWueaWre+8ie+8jCoq5Y+Z6L+w5o6l5oiQ5q2j5bi45q616JC9KirvvIjor6Xov57nmoTlnLDmlrnov57vvInjgILkuI3mmK/ml6DohJHlkIjlubbvvIzlvJXlj7flvIDlpLTnmoTmrrXkuIDkuKrpg73msqHliqjjgIINCg0K5aSE55CG5YmN5ZCO5q2j5paH5a2X5pWwIDEwMjQxMzAg4oaSIDEwMjQxODLvvIzlpJrlh7rmnaXnmoTlh6DljYHkuKrlrZfmmK/ooaXkuIrnmoTnq6DoioLmoIfpopjjgIIqKuaOkueJiOWPr+S7peWKqO+8jOato+aWh+S4gOS4quWtl+S4jeiDveWKqOOAgioqDQoNCuWIh+aNouaWueW8j+WwseWcqOmYheivu+WZqOWPs+S4iuinku+8mmDlm57ljp/kuablr7nnhadgIOS4gOmUruWIh+WbnuWOu++8jCoq6L+Y5YGc5Zyo5ZCM5LiA56ug5ZCM5LiA5L2N572uKirvvIzmoLflvI/kuZ/kv53mjIHkuI3lj5jjgIINCg0KIyMjIOWbvueJh+a1j+iniO+8mjQzOCDlvKDvvIzkuIDlvKDkuI3okL0NCg0KIVvlm77niYfmtY/op4hdKGRvY3MvaW1hZ2VzL2RlbW8tOS1nYWxsZXJ5LnBuZykNCg0K5q+P5byg5Zu+5LiL6Z2i6YO95qCH552A77yaKirmlofku7blkI0gwrcg5Y6f5aeL5bC65a+4IMK3IOS9k+enryDCtyDmoLzlvI8gwrcg6KKr5ZOq5LiA56ug5byV55SoKirjgIINCg0KLSDlj6/ku6XmjInlsLrlr7jmjpLluo/vvIzkuIDnnLznnIvlh7rlk6rlh6DlvKDmmK8i5L2T56ev5aSn5oi3Ig0KLSDlj6/ku6XmkJzmlofku7blkI0NCi0g5Y+v5Lul5Yu+44CM5Y+q55yL5q2j5paH5byV55So44CN77yM5oqK5rKh55So5Yiw55qE5LiA6ZSu562b5Ye65p2lDQoNCumhtumDqOaxh+aAu++8mmA0Mzgg5byg5Zu+54mHIMK3IDQzOCDlvKDooqvlvJXnlKggwrcgMCDlvKDmnKrooqvlvJXnlKggwrcg5ZCI6K6hIDk3LjY4IE1CYA0KDQojIyMg54K55byA55yL5aSn5Zu+DQoNCiFb5aSn5Zu+5p+l55yLXShkb2NzL2ltYWdlcy9kZW1vLTEwLWxpZ2h0Ym94LnBuZykNCg0KYGltZ18wMDA5LmpwZ2AgwrcgYDgzMsOXMTIxNmAgwrcgYDIxMS4yIEtCYCDCtyBgSlBHYCDCtyBg5q2j5paH5byV55SoYCDCtyBg56ysIDc3IOeroO+8muiAg+ivleacn+mXtCAoNylgIMK3IGDnrKwgMTAgLyA0Mzgg5bygYA0KDQrmlK/mjIHpgILlupTnqpflj6MgLyDljp/lp4vlsLrlr7ggLyDoh6rnlLHnvKnmlL4gLyDkuIrkuIvlvKDnv7vpobXjgILlpITnkIbov4fnmoTlm77ov5jog73ngrkgKirjgIzlr7nmr5Tljp/lm77jgI0qKu+8jOW3puWPs+W5tuaOkueci+eUu+i0qOW3ruWkmuWwkeKAlOKAlCoq5Y6L5b6X5aSq54ug5bCx6LCD5Zue5Y676YeN5p2l77yM5LiN55So6Z2g54yc44CCKioNCg0KLS0tDQoNCiMjIPCflI0g5aSE55CG5YmN5ZCO77yM5Yiw5bqV5pS55LqG5LuA5LmIDQoNCuaLv+S4iumdoumCo+acrOS5puS4vuS+i++8jOmAkOmhueWvue+8mg0KDQp8IHwg5Y6f5LmmIHwg5aSE55CG5ZCOIHwNCnwgLS0tIHwgLS0tIHwgLS0tIHwNCnwgKirkvZPnp68qKiB8IDEwMS42OSBNQiB8ICoqMzUuOTUgTULvvIjiiJI2NC42Je+8iSoqIHwNCnwgKipPUEYg54mI5pysKiogfCDlo7DmmI4gRVBVQiAzLjDvvIwqKuWNtOayoeaciSBuYXYg5paH5qGjKirvvIjmrovnvLrnmoQgMy4w77yJIHwg5oyJ6YCJ5oup6YeN5bu65Li6IEVQVUIgMi4wIOWujOaVtOe7k+aehCB8DQp8ICoqbWFuaWZlc3QqKiB8IDMyNSDmnaHvvIzljIXph4zljbTmnIkgNzcwIOS4quaWh+S7tjxicj7ihpIgKio0Mzgg5byg5Zu+5Yeg5LmO5YWo5rKh55m76K6wKiogfCA1OTcg5p2h77yM5LiA5Liq5LiN5ryPIHwNCnwgKirlm77niYcqKiB8IDQzOCDkuKogLyA5Ny42OCBNQiB8IDI3MiDkuKogLyAzNC4xNyBNQjxicj7vvIjmuIXmjokgMTY2IOS4quWujOWFqOmHjeWkjeeahO+8jOecgSAyMC41NiBNQu+8iSB8DQp8ICoq5q2j5paH57uT5p6EKiogfCA1NjU5NyDmrrUi5LiA5Y+l6K+d5LiA5q61IiB8IDUwODcyIOaute+8jOWQiOW5tuaOiSAxNDQyNiDkuKrnoo7mrrUgfA0KfCAqKuebruW9lSoqIHwg5Y+q5pyJIE5DWCB8IE5DWO+8iEVQVUIgMu+8ieaIliBOQ1ggKyBuYXbvvIhFUFVCIDPvvInvvIwzMjMg56ug5YWo6YCaIHwNCnwgKirmjpLniYgqKiB8IOaXoOe8qei/m+OAgeeijuauteOAgeautemXtOWkp+epuuihjCB8IDJlbSDnvKnov5vjgIHmiJDmrrXjgIHooYzpq5ggMS45IHwNCnwgKiptaW1ldHlwZSoqIHwg5L2N572u5LiN56Gu5a6aIHwg5by65Yi26aaW5p2h44CB5LiN5Y6L57ypIHwNCg0KPiDwn5OMIOi/meWwseaYr+S4uuS7gOS5iOWug+S/ruWujOeahOS5puWcqOaJi+acuuS4iuOAjOeqgeeEtuiDveeci+S6huOAjeKAlOKAlOS4jeaYr+eOhOWtpu+8jOaYryA0Mzgg5Liq5pyq55m76K6w55qE5byV55So6KKr6KGl5LiK5LqG44CCDQoNCi0tLQ0KDQojIyDwn5OXIEVQVUIgMiDov5jmmK8gRVBVQiAz77yfDQoNCui/meS4qumXrumimOmXrueahOS6uuacgOWkmu+8jOebtOaOpeS4iuihqO+8mg0KDQp8IHwgKipFUFVCIDIuMCoqIHwgKipFUFVCIDMuMCoqIHwNCnwgLS0tIHwgLS0tIHwgLS0tIHwNCnwg6K+e55SfIHwgMjAwNyDlubQgfCAyMDE0IOW5tCB8DQp8IOebruW9lSB8IE5DWCDmlofku7YgfCBuYXYueGh0bWzvvIjlj6/lhbzlrrkgTkNY77yJIHwNCnwg5o6S54mI6IO95YqbIHwg5Z+656GAIENTUyAyLjEgfCBIVE1MNSArIENTUzPjgIFNYXRoTUzjgIHpn7Pop4bpopHjgIHlm7rlrprniYjlvI8gfA0KfCDpmIXor7vlmajmlK/mjIEgfCAqKuWHoOS5juaJgOaciSoq77yM5Y2B5bm05YmN55qE6K6+5aSH5Lmf6K6kIHwg5paw6ZiF6K+75Zmo6K6k77yM6ICB6K6+5aSHIC8g6ICBIEFwcCDlj6/og73nv7vnmb3nnLwgfA0KfCDkvZPnp68gfCDnlaXlsI8gfCDnlaXlpKcgfA0KfCDpgILlkIjosIEgfCDnuq/mloflrZcgKyDmj5Llm77nmoQqKuWwj+ivtCoqIHwg5pWZ5p2Q44CB57uY5pys44CB6ZyA6KaB5Lqk5LqS5oiW5aSa5aqS5L2T55qE5LmmIHwNCg0KIyMjIPCfkYkg57uT6K6677ya5bCP6K+05bCx6YCJIEVQVUIgMi4wDQoNCueQhueUseW+iOactOe0oO+8mg0KDQoxLiAqKuWFvOWuueaAp+eivuWOi+OAgioqIOmdmeivu+WkqeS4i+OAgeaOjOmYheOAgeWkmueci+OAgU1vb24rIFJlYWRlcuOAgUFwcGxlIEJvb2tz44CB5ZCE56eN55S157q45Lmm4oCU4oCUMi4wIOaYryLpl63nnYDnnLznnZvpg73og73miZPlvIAi55qE5Zyw5p2/57qn5qCH5YeG44CCDQoyLiAqKjMuMCDlpJrlh7rmnaXnmoTog73lipvvvIzkvaDnnIvlsI/or7TmoLnmnKznlKjkuI3kuIrjgIIqKiDpn7Pop4bpopHjgIHkuqTkupLohJrmnKzjgIFNYXRoTUwg5YWs5byP4oCm4oCm5LiA5pys5bCP6K+06KaB6L+Z5Lqb5bmy5Zib77yf5Y+N6ICM5Y+v6IO96K6p6ICB6K6+5aSH54qv6L+357OK44CCDQozLiAqKuecgeS6i+OAgioqIOacieS6m+mYheivu+WZqOWvuSAzLjAg55qEIENTUzMg5pSv5oyB5Y+N6ICM5LiN5a6M5pW077yM5a2X5L2T44CB57yp6L+b5Lya6LeR5YGP77ybMi4wIOeahOa4suafk+i3r+W+hOiiq+ejqOS6huWNgeWHoOW5tO+8jOacgOeos+OAgg0KDQrlt6Xlhbfpu5jorqTnu5nnmoTmmK/jgIzot5/ljp/kuabkuIDoh7TjgI3igJTigJTkuI3kvJrmk4Xoh6rmm7/kvaDmlLnjgIIqKuWmguaenOS9oOWPquaDs+WuieWuieeos+eos+ivu+WujO+8jOaJi+WKqOeCueS4gOS4iyBFUFVCIDIuMCDlsLHooYzjgIIqKg0KDQrogIzkuJTlroPkuI3mmK/mlLnkuKrniYjmnKzlj7fmlbfooY3kvaDvvJrpgIkgMiDlsLHkvJrnnJ/nmoTph43lu7ogT1BGIOeJiOacrOWjsOaYjuOAgeeUn+aIkCBOQ1gg55uu5b2V44CB5oqK56ug6IqC5paH5qGj57G75Z6L5o2i5oiQIFhIVE1MIDEuMe+8jOWkhOeQhuWujOi/mOS8muiHquajgOS4gOmBjeOAgjxzdWI+77yI6YCJIDMg5ZCM55CG77yM5Lya6KGlIG5hdiDmlofmoaPigJTigJTkuIrpnaLpgqPmnKzljp/kuablsLHmmK/kuKrmsqEgbmF2IOeahOaui+e8uiAzLjDjgILvvIk8L3N1Yj4NCg0KLS0tDQoNCiMjIPCfk6Ug5LiL6L29DQoNCuWIsCAqKltSZWxlYXNlc10oaHR0cHM6Ly9naXRodWIuY29tL3ZpcmRlbW9uL2VwdWItbWFzdGVyL3JlbGVhc2VzKSoqIOaMkeS4gOS4qu+8mg0KDQp8IOaWh+S7tiB8IOezu+e7nyB8IOaAjuS5iOeUqCB8IOWkp+WwjyB8DQp8IC0tLSB8IC0tLSB8IC0tLSB8IDotLS06IHwNCnwg8J+Wpe+4jyBgRVBVQl9NYXN0ZXJfdjEuMl9XaW5kb3dzX3g2NF9TZXR1cC5leGVgIHwgV2luZG93cyAxMC8xMSB4NjQgfCAqKuaOqOiNkCoq44CC5Y+M5Ye75a6J6KOF77yM6Ieq5Yqo5bu65b+r5o235pa55byP77yM5Y+v5Y246L29IHwgNjggTUIgfA0KfCDwn6ezIGBFUFVCX01hc3Rlcl92MS4yX1dpbmRvd3NfeDY0X1BvcnRhYmxlLnppcGAgfCBXaW5kb3dzIDEwLzExIHg2NCB8IOe7v+iJsueJiOOAguino+WOi+WNs+eUqO+8jOS4jeWGmeazqOWGjOihqO+8jOiDveWhniBVIOebmCB8IDk0IE1CIHwNCnwg8J+TsSBgRVBVQi1NYXN0ZXItQW5kcm9pZC12MS4yLmFwa2AgfCBBbmRyb2lkIDcuMCsgfCDmiYvmnLrniYjvvIzlj6rlgZrljovnvKnvvIznlYzpnaLph43lgZogfCAzLjIgTUIgfA0KDQo+IOKaoO+4jyDmsqHkubDku6PnoIHnrb7lkI3or4HkuabvvIxXaW5kb3dzIOWPr+iDveaPkOekuuOAjOacquefpeWPkeW4g+iAheOAjeOAgueCueOAjOabtOWkmuS/oeaBryDihpIg5LuN6KaB6L+Q6KGM44CN5Y2z5Y+v77yM5rqQ56CB5YWo5Zyo6L+Z5YS/77yM5Y+v5Lul6Ieq5bex5a6h44CCDQo+DQo+IPCfjY4gbWFjT1PvvJrnkIborrrkuIogRWxlY3Ryb24g54mI6IO96LeR77yM5L2G5rKh5omT5YyF5Lmf5rKh5rWL6K+V77yM5LiN5o+Q5L6b5LiL6L2944CC5oOz6K+V5Y+v5Lul54Wn5LiL6Z2i55qE44CM5LuO5rqQ56CB5p6E5bu644CN6Ieq5bex5omT5LiA5Liq44CCDQoNCi0tLQ0KDQojIyDwn5qAIOS4ieatpeWwseiDveeUqA0KDQpgYGB0ZXh0DQrikaAg5LiL6L29IOKGkiDikaEg5ouW5Lmm6L+b5Y67IOKGkiDikaIg54K544CM5byA5aeL5aSE55CG44CNDQpgYGANCg0K55yf55qE5bCx6L+Z5LiJ5q2l44CC5LiN55So6KOFIE5vZGXjgIHkuI3nlKjphY3njq/looPjgIHkuI3nlKjogZTnvZHjgIINCg0KPGRldGFpbHM+DQo8c3VtbWFyeT48Yj7mg7Plvq7osIPvvJ/lsZXlvIDnnIvmr4/kuKrpgInpobnnrqHku4DkuYg8L2I+PC9zdW1tYXJ5Pg0KDQp8IOiuvue9riB8IOm7mOiupCB8IOivtOaYjiB8DQp8IC0tLSB8IC0tLSB8IC0tLSB8DQp8IOWkhOeQhuaooeW8jyB8IOa3seW6puS8mOWMliB8IOagh+WHhiAvIOa3seW6piAvIOaegeiHtO+8jOS4ieaho+WPguaVsOWujOWFqOS4jeWQjO+8jOingeS4i+ihqCB8DQp8IOWbvueJh+acgOmVv+i+uSB8IDE2MDAgcHggfCDlj6rnvKnkuI3mlL7jgILljp/lm77mm7TlsI/lsLHkv53mjIHljp/moLcgfA0KfCDlm77niYfotKjph48gfCA4NCB8IDgwfjg1IOaYr+iCieecvOmavui+qOeahOeUnOeCueWMuiB8DQp8IOaZuuiDvemHjeWkjeWbvueJh+a4heeQhiB8IOW8gCB8IOWPqua4heehruWumuWujOWFqOebuOWQjOeahCB8DQp8IOi+k+WHuuagvOW8jyB8IOi3n+WOn+S5piB8IOW7uuiuruaJi+WKqOmAiSBFUFVCIDIuMCB8DQp8IOWQr+eUqOWIhuWNtyB8IOWFsyB8IOS5puWkquWkp+aXtuaMieeroOiKgui+ueeVjOaLhuaIkOWkmuS4queLrOeriyBFUFVCIHwNCnwg6L6T5Ye655uu5b2VIHwg5LiL6L29XEVQVUJfTWFzdGVyIHwg5Y6f5paH5Lu25rC46L+c5LiN5Yqo77yM57uT5p6c5Y+m5a2YIHwNCg0KPC9kZXRhaWxzPg0KDQojIyMg5LiJ5qGj5qih5byP77yM5Y+C5pWw5piv55yf55qE5LiN5LiA5qC3DQoNCnwgfCDwn5+mIOagh+WHhuS8mOWMliB8IPCfn6og5rex5bqm5LyY5YyWIHwg8J+fpSDmnoHoh7TljovnvKkgfA0KfCAtLS0gfCAtLS0gfCAtLS0gfCAtLS0gfA0KfCDljp/kuaYgQ1NTIHwg5L+d55WZIHwg5pu/5o2i5Li657uf5LiA5qC35byP6KGoIHwg5pu/5o2i5Li657uf5LiA5qC35byP6KGoIHwNCnwg57ud5a+55Y2V5L2N77yIcHgvcHTvvIkgfCDmjaLnrpfmiJDnm7jlr7nljZXkvY0gfCDmjaLnrpcgfCDmjaLnrpcgfA0KfCDlm77niYfmnIDplb/ovrkgfCDkuI3pmZDliLYgfCAxNjAwIHB4IHwgMTIwMCBweCB8DQp8IEpQRUcg6LSo6YePIHwgMC45MCB8IDAuODQgfCAwLjcwIHwNCnwg5YaF5bWM5a2X5L2TIHwg5L+d55WZIHwg56e76ZmkIHwg56e76ZmkIHwNCnwg56m65q616JC95riF55CGIHwg5LiN5YGaIHwg5YGaIHwg5YGaIHwNCnwg5riF55CG5pyq5byV55So6LWE5rqQIHwg5LiN5YGaIHwg5LiN5YGaIHwg5YGaIHwNCnwg6YCC5ZCIIHwg5Y+q5oOz5L+u5o6S54mIIHwg5pel5bi45o6o6I2QIHwg5aGe6L+b5bCP5a2Y5YKoIHwNCg0KLS0tDQoNCiMjIPCfk7Eg5a6J5Y2T54mIDQoNCuaJi+acuuS4iuWPqueVmeS4i+OAjOWOi+e8qeOAjei/meS4gOS7tuS6i+OAgueVjOmdoumHjeaWsOeUu+i/h++8jOS4jeaYr+eUteiEkeeJiOeahOe8qeWwj+eJiOOAgg0KDQo8ZGl2IGFsaWduPSJjZW50ZXIiPg0KDQp8IOKRoCDkuLvpobUgfCDikaEg6YCJ5qih5byPIHwNCnw6LS0tOnw6LS0tOnwNCnwgPGltZyBzcmM9ImRvY3MvaW1hZ2VzL2FwcC1ob21lLnBuZyIgd2lkdGg9IjMwMCI+IHwgPGltZyBzcmM9ImRvY3MvaW1hZ2VzL2FwcC1jb25maWcucG5nIiB3aWR0aD0iMzAwIj4gfA0KfCDmiZPlvIDlsLHog73pgInkuabvvIzmsqHmnInlpJrkvZnlhaXlj6MgfCDmjqjojZAgLyDpq5jotKjph48gLyDlvLrlipvvvIzkuInmoaPkuIDlj6Xor53or7TmuIUgfA0KDQp8IOKRoiDljovnvKnkuK0gfCDikaMg5a6M5oiQIHwNCnw6LS0tOnw6LS0tOnwNCnwgPGltZyBzcmM9ImRvY3MvaW1hZ2VzL2FwcC1wcm9ncmVzcy5wbmciIHdpZHRoPSIzMDAiPiB8IDxpbWcgc3JjPSJkb2NzL2ltYWdlcy9hcHAtZG9uZS5wbmciIHdpZHRoPSIzMDAiPiB8DQp8IOecn+Wunui/m+W6piArIOWPr+WPlua2iO+8jOS4jeWNoeeVjOmdoiB8IOWOn+Wkp+WwjyAvIOWOi+e8qeWQjiAvIOecgeS6huWkmuWwkSAvIOWOi+e8qeeOhyB8DQoNCjwvZGl2Pg0KDQoqKuWHoOS4quehrOe7huiKgu+8mioqDQoNCi0g8J+SviDkv53lrZjliLAgYOS4i+i9vS9FUFVCIE1hc3Rlci/ljp/mlofku7blkI1fY29tcHJlc3NlZC5lcHViYO+8jOaWh+S7tueuoeeQhuWZqOebtOaOpeiDveeci+WIsA0KLSDwn5SQIEFuZHJvaWQgMTArIOi1sCBNZWRpYVN0b3JlIOWGmeWFpe+8jCoq5LiN6ZyA6KaB5a2Y5YKo5p2D6ZmQKioNCi0g8J+nqSDliIblnZfkvKDovpPvvIhgYmVnaW4g4oaSIHdyaXRlQ2h1bmsgw5cgTiDihpIgZmluaXNoYO+8ie+8jOWkp+aWh+S7tuS4jeS8muWboOWNleasoeS8oOi+k+i2hemZkOWksei0pQ0KLSDwn5uh77iPIOWkp+WbvuaMieebruagh+WwuuWvuCoq6ZmN6YeH5qC36Kej56CBKirvvIzlhoXlrZjls7DlgLzpmY3kuIDkuKrmlbDph4/nuqfvvIzkvY7phY3mnLrkuZ/kuI3pl6rpgIANCi0g4oap77iPIOezu+e7n+i/lOWbnumUrumAkOmhteWQjumAgO+8jOS4jeS8muS4gOaMieWwsemAgOWHug0KLSDwn5OXICoqRVBVQiAyLjAg6L+b5bCx5pivIEVQVUIgMi4wIOWHuioq77yM5LiN56KwIE9QRiAvIE5DWCAvIG1pbWV0eXBlDQoNCi0tLQ0KDQojIyDwn5ug77iPIOS7jua6kOeggeaehOW7ug0KDQo8ZGV0YWlscz4NCjxzdW1tYXJ5PjxiPuWxleW8gOafpeeci+aehOW7uuWRveS7pDwvYj48L3N1bW1hcnk+DQoNCiMjIyDnvZHpobXniYjvvIjpm7blronoo4XvvIkNCg0KYGBgYmFzaA0KIyDnm7TmjqXnlKjmtY/op4jlmajmiZPlvIANCmVwdWJmaXgvaW5kZXguaHRtbA0KYGBgDQoNCiMjIyBXaW5kb3dzIOahjOmdoueJiA0KDQpgYGBiYXNoDQpjZCBkZXNrdG9wDQpucG0gaW5zdGFsbA0KbnB4IGVsZWN0cm9uIC4NCmBgYA0KDQrmiZPljIXmiJDlronoo4XnqIvluo/vvJoNCg0KYGBgYmFzaA0KcHl0aG9uIHRvb2xzL2J1aWxkX3N0YW5kYWxvbmUucHkgICAgICMg5Y2V5paH5Lu2572R6aG1DQpweXRob24gdG9vbHMvYXNzZW1ibGVfZGVza3RvcC5weSAgICAgIyDnu4Too4UgRWxlY3Ryb24g6L+Q6KGM5pe2DQpweXRob24gdG9vbHMvbWFrZV9yZWxlYXNlLnB5ICAgICAgICAgIyDkvr/mkLrnm67lvZUgKyBaSVANCm1ha2Vuc2lzIGluc3RhbGxlci9FUFVCX01hc3Rlci5uc2kgICAjIE5TSVMg5a6J6KOF5YyFDQpgYGANCg0KIyMjIOWuieWNk+eJiA0KDQrpnIDopoEgSkRLIDIxICsgQW5kcm9pZCBTREvjgIINCg0KYGBgYmFzaA0KY2QgbW9iaWxlDQpucG0gaW5zdGFsbA0KDQojIOaUueWujOWJjeerr+WQju+8jOmHjeaWsOaJk+WMheWOn+eUn+ahpeaOpQ0KbnB4IGVzYnVpbGQgbmF0aXZlLWJyaWRnZS1zcmMuanMgLS1idW5kbGUgLS1mb3JtYXQ9aWlmZSAtLXRhcmdldD1lczIwMTcgLS1vdXRmaWxlPXd3dy9uYXRpdmUtYnJpZGdlLmpzDQoNCm5weCBjYXAgc3luYyBhbmRyb2lkDQpjZCBhbmRyb2lkICYmIC4vZ3JhZGxldyBhc3NlbWJsZVJlbGVhc2UNCmBgYA0KDQrkuqfnianlnKggYG1vYmlsZS9hbmRyb2lkL2FwcC9idWlsZC9vdXRwdXRzL2Fway9yZWxlYXNlL2DjgIINCg0KPiDimqDvuI8g5LuT5bqT5LiN5ZCr562+5ZCN5a+G6ZKl77yIa2V5c3RvcmXvvInjgILopoHlh7rmraPlvI/ljIXvvIzor7foh6rlt7HnlJ/miJDkuIDkuKrjgIINCg0KIyMjIOi3kea1i+ivlQ0KDQpgYGBiYXNoDQpub2RlIHRlc3QvdmVyaWZ5X2NvbXByZXNzX2NvcmUuanMgICAgICAjIOWOi+e8qeW8leaTjue7k+aehOWujOaVtOaApw0Kbm9kZSB0ZXN0L3ZlcmlmeV9icm93c2VyX2NvbXByZXNzLmpzICAgIyDlm77niYfljovnvKnnnJ/lrp7mlYjmnpzvvIjpnIDopoEgQ2hyb21pdW3vvIkNCm5vZGUgdGVzdC92ZXJpZnlfY2h1bmtfdHJhbnNmZXIuanMgICAgICMg5YiG5Z2X5Lyg6L6T5a2X6IqC5a6M5pW05oCnDQpub2RlIHRlc3QvdmVyaWZ5X2UyZS5qcyAgICAgICAgICAgICAgICAjIOWuieWNk+err+WujOaVtOa1geeoiw0KYGBgDQoNCjwvZGV0YWlscz4NCg0KLS0tDQoNCiMjIPCfk4Ig6aG555uu57uT5p6EDQoNCmBgYA0KZXB1YmZpeC8gICAgICAgICAgICAgICAg55S16ISR54mI572R6aG15bqU55SoDQogIGluZGV4Lmh0bWwgICAgICAgICAgICDnlYzpnaINCiAgYXBwLmpzICAgICAgICAgICAgICAgIOS6pOS6kuWxgg0KICBzdHlsZS5jc3MgICAgICAgICAgICAg5qC35byPDQogIHNyYy9jb3JlLmpzICAgICAgICAgICBFUFVCIOWkhOeQhuW8leaTju+8iOe6piA1MDAwIOihjO+8jOe6ryBKU++8iQ0KICB2ZW5kb3IvZmZsYXRlLmpzICAgICAgWklQIOWkhOeQhg0KDQpkZXNrdG9wLyAgICAgICAgICAgICAgICBFbGVjdHJvbiDmoYzpnaLlo7MNCmluc3RhbGxlci8gICAgICAgICAgICAgIFdpbmRvd3Mg5a6J6KOF56iL5bqP77yITlNJU++8iQ0KDQptb2JpbGUvICAgICAgICAgICAgICAgICDlronljZPniYjvvIhDYXBhY2l0b3IgOO+8iQ0KICB3d3cvICAgICAgICAgICAgICAgICAg5YmN56uv6LWE5rqQDQogIG5hdGl2ZS1icmlkZ2Utc3JjLmpzICDljp/nlJ/moaXmjqXmupDnoIENCiAgYW5kcm9pZC8gICAgICAgICAgICAgIEFuZHJvaWQg5bel56iLDQogICAgYXBwL3NyYy9tYWluL2phdmEvY29tL2VwdWJtYXN0ZXIvYXBwLw0KICAgICAgTWFpbkFjdGl2aXR5LmphdmEgICAgICAgICAg6L+U5Zue6ZSu5oum5oiqICsg5o+S5Lu25rOo5YaMDQogICAgICBEb3dubG9hZFNhdmVyUGx1Z2luLmphdmEgICBNZWRpYVN0b3JlIOWIhuWdl+WGmeWFpeaPkuS7tg0KDQpkb2NzL2ltYWdlcy8gICAgICAgICAgICBSRUFETUUg6YWN5Zu+DQp0b29scy8gICAgICAgICAgICAgICAgICDpgKDmoLfkuabjgIHmiZPljIXjgIHmiKrlm77nrYnohJrmnKwNCnRlc3QvICAgICAgICAgICAgICAgICAgIOWbnuW9kua1i+ivlQ0KYGBgDQoNCi0tLQ0KDQojIyDinZMg5bi46KeB6Zeu6aKYDQoNCjxkZXRhaWxzPg0KPHN1bW1hcnk+PGI+5aSE55CG5ZCO55qE5Lmm5Lya5Y+Y5b2i5ZCX77yf56ug6IqC5Lya5Lii5ZCX77yfPC9iPjwvc3VtbWFyeT4NCg0K5LiN5Lya44CC5byV5pOO5LiN5Yig56ug6IqC44CB5LiN5pS55q2j5paH5paH5a2X44CB5LiN5YqoIE9QRi9OQ1gg57uT5p6E44CC5a6D5Y+q5YGa5LiJ5Lu25LqL77ya5o2i5Zu+54mH5a2X6IqC44CB6LCD5pW0IENTU+OAgeS/ruWkjeehruWunuWdj+aOieeahOW8leeUqOOAgg0KDQrmr4/mrKHlpITnkIblrozpg73kvJrph43mlrDop6PmnpDovpPlh7rmlofku7bvvIzpgJDnq6Dmr5Tlr7nlrZfmlbDigJTigJTkuIrpnaLpgqPkuKrmvJTnpLrph4zvvIwxMzYxNDQ2IOWtl+i/m+OAgTEzNjE1NzUg5a2X5Ye677yM5aSa5Ye65p2l55qEIDEyOSDkuKrlrZfnrKbmmK/ph43lu7rmrrXokL3ml7booaXnmoTmjaLooYznrKbkvY3nva7lt67lvILvvIzmraPmlofkuIDkuKrlrZfmsqHlsJHjgIINCjwvZGV0YWlscz4NCg0KPGRldGFpbHM+DQo8c3VtbWFyeT48Yj7ljp/mlofku7bkvJrooqvopobnm5blkJfvvJ88L2I+PC9zdW1tYXJ5Pg0KDQrnu53lr7nkuI3kvJrjgILljp/lp4sgRVBVQiDlhajnqIvlj6ror7vvvIzmiYDmnInlpITnkIblnKjkuLTml7blia/mnKzkuIrlrozmiJDvvIzovpPlh7rlj6blrZjkuLrmlrDmlofku7bjgIINCjwvZGV0YWlscz4NCg0KPGRldGFpbHM+DQo8c3VtbWFyeT48Yj7kuLrku4DkuYjlpITnkIblrozmlofmnKzlj43ogIzlj5jlpKfkuobvvJ88L2I+PC9zdW1tYXJ5Pg0KDQrlm6DkuLrljp/kuabmrrXokL3mmK/pnaAgYDxicj5gIOehrOaOkueahO+8jOmHjeW7uuagh+WHhiBgPHA+YCDmrrXokL3kvJrlpJrljaDkuIDngrnlrZfoioLjgILnlKjlh6AgTUIg5o2i5LiA5Liq6IO96K+755qE5o6S54mI77yM6YCa5bi45b6I5YiS566X4oCU4oCU6ICM5LiU5L2T56ev55qE5aSn5aS05LuO5p2l6YO95piv5Zu+54mH44CCDQo8L2RldGFpbHM+DQoNCjxkZXRhaWxzPg0KPHN1bW1hcnk+PGI+5bimIERSTSDnmoTliqDlr4bkuabog73nlKjlkJfvvJ88L2I+PC9zdW1tYXJ5Pg0KDQrkuI3og73jgIJEUk0g5Yqg5a+G55qE5Lmm5Lya6KKr6Lez6L+H77yM6L+Z5piv6K6+6K6h5aaC5q2k44CCDQo8L2RldGFpbHM+DQoNCjxkZXRhaWxzPg0KPHN1bW1hcnk+PGI+5Lya5LiK5Lyg5oiR55qE5Lmm5ZCX77yfPC9iPjwvc3VtbWFyeT4NCg0K5LiN5Lya44CC5pW05Liq6L2v5Lu25rKh5pyJ5LiA6KGM6IGU572R5Luj56CB44CC5pat572R54q25oCB5LiL5Yqf6IO95a6M5YWo5q2j5bi444CC572R6aG154mI5Y+M5Ye7IGBpbmRleC5odG1sYCDlsLHlnKjmnKzlnLDot5HvvIzov57mnI3liqHlmajpg73msqHmnInjgIINCjwvZGV0YWlscz4NCg0KPGRldGFpbHM+DQo8c3VtbWFyeT48Yj7miYvmnLrkuIrlip/og73mgI7kuYjlsJHkuobpgqPkuYjlpJrvvJ88L2I+PC9zdW1tYXJ5Pg0KDQrmlYXmhI/nmoTjgILmiYvmnLrlsY/luZXlsLHov5nkuYjlpKfvvIzmiorljYHlh6DkuKrlip/og73loZ7ov5vljrvlj6rkvJrorqnkurrmib7kuI3liLDor6Xngrnlk6rlhL/jgILmiYvmnLrnq6/lj6rlgZrjgIzpgInkuaYg4oaSIOmAieahoyDihpIg5Y6L57ypIOKGkiDkv53lrZjjgI3lm5vmraXvvIzkuJPmsrsi5paH5Lu25aSq5aSn5Y+R5LiN5Ye65Y67IuOAguimgeaOkueJiOOAgei9rOagvOW8j+OAgeWIhuWNt++8jOeUqOeUteiEkeeJiOOAgg0KPC9kZXRhaWxzPg0KDQotLS0NCg0KIyMg8J+SliDotZ7liqkNCg0K6L+Z6L2v5Lu25LuO5aS05Yiw5bC+5pivKirlhY3otLnjgIHlvIDmupDjgIHml6Dlub/lkYrjgIHml6DlhoXotK0qKueahO+8jOS5n+ayoeacieS7u+S9leiBlOe9keWKn+iDveOAgg0KDQrlpoLmnpzlroPluK7kvaDnnIHkuIvkuoblh6DkuKrmmZrkuIrnmoTmipjohb7vvIzmiJbogIXorqnkvaDnu4jkuo7lnKjmiYvmnLrkuIror7vlrozkuobkuIDmnKzkuIDnm7TmiZPkuI3lvIDnmoTkuabvvIzlj6/ku6Xor7fkvZzogIXllp3mna/lkpbllaEg4piVDQoNCjxkaXYgYWxpZ249ImNlbnRlciI+DQoNCjx0YWJsZT4NCiAgPHRyPg0KICAgIDx0ZCBhbGlnbj0iY2VudGVyIiB3aWR0aD0iNTAlIj4NCiAgICAgIDxiPvCfkpog5b6u5L+h5pSv5LuYPC9iPjxicj48YnI+DQogICAgICA8aW1nIHNyYz0iZG9jcy9pbWFnZXMvc3BvbnNvci13ZWNoYXQucG5nIiB3aWR0aD0iMjYwIiBhbHQ9IuW+ruS/oeaUtuasvueggSI+PGJyPg0KICAgICAgPHN1Yj7miZPlvIDlvq7kv6Eg4oaS44CM5omr5LiA5omr44CNPC9zdWI+DQogICAgPC90ZD4NCiAgICA8dGQgYWxpZ249ImNlbnRlciIgd2lkdGg9IjUwJSI+DQogICAgICA8Yj7wn5KZIOaUr+S7mOWunTwvYj48YnI+PGJyPg0KICAgICAgPGltZyBzcmM9ImRvY3MvaW1hZ2VzL3Nwb25zb3ItYWxpcGF5LmpwZyIgd2lkdGg9IjI2MCIgYWx0PSLmlK/ku5jlrp3mlLbmrL7noIEiPjxicj4NCiAgICAgIDxzdWI+5omT5byA5pSv5LuY5a6dIOKGkuOAjOaJq+S4gOaJq+OAjTwvc3ViPg0KICAgIDwvdGQ+DQogIDwvdHI+DQo8L3RhYmxlPg0KDQo8L2Rpdj4NCg0KPiDotZ7liqkqKuWujOWFqOiHquaEvyoq77yM5LiN5b2x5ZON5Lu75L2V5Yqf6IO944CC5LiN6LWe5Yqp5Lmf54Wn5qC355So5b6X6IiS6IiS5pyN5pyN44CCDQo+DQo+IOS5n+asoui/jui1nuWKqeaXtueVmeWPpeivne+8jOWRiuivieaIkeS9oOeUqOWug+WkhOeQhuS6huS7gOS5iOS5puOAgei/mOe8uuS7gOS5iOWKn+iDveOAgg0KDQrkuI3mg7PoirHpkrHnmoTor53vvIzkuZ/mnInmm7Tlrp7lnKjnmoTmlK/mjIHmlrnlvI/vvJoNCg0KLSDirZAg54K55LiqICoqU3Rhcioq77yM6K6p5pu05aSa5ZCM5qC35aS055a855qE5Lq65pCc5b6X5YiwDQotIPCfkJsg6YGH5Yiw6Zeu6aKY5byA5LiqIFtJc3N1ZV0oLi4vLi4vaXNzdWVzKe+8jOmZhOS4iuS5pueahOeJueW+ge+8iOWkmuWwkeeroOOAgeWkmuWwkeWbvuOAgeWkmuWkp++8iQ0KLSDwn5OiIOaOqOiNkOe7meWQjOagt+iiqyBFUFVCIOS9k+enr+WbsOaJsOeahOaci+WPiw0KDQotLS0NCg0KIyMg8J+ThCDorrjlj68NCg0KW01JVF0oTElDRU5TRSkg4oCU4oCUIOmaj+S+v+eUqOOAgemaj+S+v+aUueOAgemaj+S+v+WIhuWPkeOAgg0KDQo8ZGl2IGFsaWduPSJjZW50ZXIiPg0KDQoqKuWmguaenOi/meS4quW3peWFt+W4ruWIsOS6huS9oO+8jOeCueS4qiDirZAg5bCx5piv5pyA5aW955qE6byT5YqxKioNCg0KPC9kaXY+DQo=
+<div align="center">
+
+# 📚 EPUB Master
+
+**给「塞满插图的 EPUB」量身定做的轻量工具**
+
+压体积 · 修结构 · 转格式 · 排段落 · 拆分卷
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Android-brightgreen)
+![Offline](https://img.shields.io/badge/100%25-offline-success)
+![No%20Upload](https://img.shields.io/badge/文件不出本机-orange)
+
+**不联网 · 不上传 · 不改原文件**
+
+</div>
+
+---
+
+## 🍜 这玩意儿是怎么来的
+
+先说结论：被一本书逼的。
+
+作者喜欢看那种带插图的网络小说（你们都懂是哪类）。这类书别的不说，光文件和排版就够让人头疼：
+
+- **体积大**：几百 MB 是常态，图多的能到几个 G。手机才 128G，一本书就占去一块，说出去自己都不信。
+
+- **图片重复**：同一张图换个名字存好几份，正文里还反复用同一张。空间浪费是小事，翻着翻着又冒出同一张图，才是真的烦。
+
+- **排版乱**：默认阅读，一行字居中飘着，段与段之间空一大片，一屏没几行，也没有首行缩进。读起来不像书，像在看 PPT。
+
+- **打不开**：manifest 少登记几张图，或者路径写错一个字母，阅读器就报「此文件未列在 manifest 文件中」，书直接废了，你还不知道问题出在哪。
+
+这些毛病，市面上没有一个工具能一次全解决。要么只能压图，要么只能转格式，要么得传到网站在线处理——自己的书，谁放心传上去啊。
+
+于是这个完全不会编程的作者，找了个 AI，一版一版地试：拿真书跑，出问题就改，改完再跑。中间推翻重来过十几回，最惨的一次压完发现插图全没了。
+
+现在总算跑顺了。想着肯定不止我一个人卡在这，就放出来给大家用。
+
+---
+
+## ✨ 它能干什么
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🗜️ 把体积压下来
+- 图片逐张重编码，最长边 600 ~ 3000 px 随便调
+- JPEG 质量 0.55 ~ 0.98 可调
+- 也可以直接说「我要 5 MB 以内」，压不到就自动分卷
+
+### 🧹 清掉重复图片
+- SHA-256 哈希 + 像素级双重比对
+- 只删**确定一模一样**的，长得像但不一样的一律保留
+- 删的是重复显示，不破坏任何引用
+
+### 🔧 修好打不开的书
+- 自动补全 manifest 缺失项（就是那个「未列在 manifest 中」）
+- 修正悬空引用、命名空间错误、错误的目录链接
+- 修完还会重新解析一遍输出文件，确认真的能打开
+
+</td>
+<td width="50%" valign="top">
+
+### 📐 排版排成能读的样子
+- 正文左对齐、2em 首行缩进、行高 1.75、段距 0.6em
+- 标题居中、加粗、不缩进
+- 图片 / 表格 / 引用 / 诗歌单独保护，不跟着正文缩进
+
+### 🔄 格式想换就换
+- 输出 **EPUB 2.0 / 3.0 / 跟原书一致**
+- 不是改版本号，是整套重建：OPF、目录、文档类型
+- 换完自检结构，通过才给你
+
+### 👀 处理前先看清楚
+- 内置阅读器，不开别的软件就能读
+- 所有插图挨个列出来，标尺寸、体积、出处
+- 处理前后**同一章并排对比**，改没改好自己判断
+
+</td>
+</tr>
+</table>
+
+<details>
+<summary><b>🧰 还有一些单点工具（点开看）</b></summary>
+
+<br>
+
+| 工具 | 干什么 |
+| --- | --- |
+| 🖼️ 图片优化 | 只看图片：压缩、转码、逐张对比变化 |
+| 🔷 SVG 检查 | 列出所有 SVG 资源，做无损精简 |
+| 🔧 结构检查与修复 | 检查 ZIP、OPF、引用、XHTML，一键修复 |
+| 🏷️ 元数据编辑 | 改书名、作者、语言、出版信息，正文一个字不动 |
+| 📕 封面提取 | 导出书里的封面原图 |
+
+![工具箱](docs/images/pc-tools.png)
+
+一次丢一堆书进去排队处理，适合整理整个书库：
+
+![批量处理](docs/images/pc-batch.png)
+
+![设置](docs/images/pc-settings.png)
+
+</details>
+
+---
+
+## 🎬 实录：一本 101 MB 的书，12 秒
+
+> 下面每一步都是真跑的，没有摆拍。用的是一本 **101.69 MB / 322 章 / 102.6 万字 / 438 张插图** 的韩国网文机翻本。
+>
+> 有个细节得说清楚：**这本书是从网页下的，所以"只有" 101 MB。** 浏览器给的版本，图片通常已经被网站压过一道。同一本书如果是在手机 App 里下的原版，**体积普遍在 1 GB 以上** —— 字还是那些字、图还是那些图，只是图是没缩过的原图。
+
+### ① 拖进去，它先给你一份体检报告
+
+![导入书籍](docs/images/demo-2-import.png)
+
+322 章、102.6 万字、438 张图占了 97.68 MB、标着 EPUB 3.0，旁边挂着红标：**2 个结构问题**。
+
+> 什么问题？点「结构检查」就能看到 —— manifest 只登记了 325 条，包里却有 770 个文件。**438 张图有一大半没被写进 manifest**，这正是阅读器报「未列在 manifest 文件中」的原因。
+
+### ② 选输出格式（这一步建议手动改成 EPUB 2.0）
+
+![输出格式](docs/images/demo-3-format.png)
+
+默认是「保留原书版本」，也可以直接点 **EPUB 2.0**。为什么建议选 2，下面有单独一节。
+
+同一个面板里还能调：图片最长边、JPEG 质量、是否清重复图、是否删没被引用的资源。
+
+### ③ 开压，进度是真的
+
+![处理中](docs/images/demo-4-progress.png)
+
+`正在优化图片 · 18% · 79/438 · img_0079.jpg`
+
+不是转圈骗人，处理到哪张图都写着。随时可以取消。
+
+### ④ 出结果，每个数字都有出处
+
+![处理结果](docs/images/demo-5-result-top.png)
+
+<div align="center">
+
+| 原始体积 | 处理后 | 省下 | 减少 | 耗时 |
+| :---: | :---: | :---: | :---: | :---: |
+| **101.69 MB** | **35.95 MB** | **65.74 MB** | **64.6%** | **12 秒** |
+
+</div>
+
+输出版本 **EPUB 2.0**，结构自检通过：
+
+> 按你选择的 EPUB 2.0 重新生成了包结构（OPF 版本声明、manifest、目录方式（NCX）、章节文档类型），不是只改版本号。
+
+### ⑤ 往下翻，能看到省在哪儿
+
+![重复图片清理](docs/images/demo-6-result-mid.png)
+
+正文里图片一共被引用 **438 次**，去重后其实只有 **272 张不同的图**：
+
+- **清除重复显示 166 处** —— 同一张图在正文里反复出现
+- **移除冗余文件 166 个** —— 同一张图在包里存了好几份，内容一模一样
+- **实打实省下 20.56 MB**，一个字节都没靠降低画质换
+
+剩下的省法是重编码：图片总体积 **97.68 MB → 34.17 MB**。文字几乎没变（3.90 → 3.75 MB），因为文字在 ZIP 里本来就压得很狠。**书的体积几乎全在图上**，这句话是这软件所有设计的出发点。
+
+### ⑥ 排版兼容性逐项检查
+
+![检查项](docs/images/demo-7-result-audit.png)
+
+14 项，每一项都写清楚检查了什么：
+
+- **段落结构**：把 **14426 个"一句话一段"的碎段合并成正常段落**，输出 50872 段
+- **重复图片**：438 张里 166 张是完全相同的重复，清掉后留 272 张，省 20.56 MB
+- **正文完整性**：原书 1024130 字、输出 1024182 字，没丢字、没重复、没粘连
+- **目录与章节**：323 章全部能在目录里点到
+- **输出完整性**：重新解析输出包，manifest 597 条全部存在，spine 323 项全部对上
+
+**有问题它会明说，没问题也不会瞎报。**
+
+---
+
+## 📉 能压多少，取决于原图有多"脏"
+
+同一个软件、同一本书，只动两个参数（图片最长边 + JPEG 质量），结果能差三倍：
+
+| 图片最长边 | JPEG 质量 | 处理后 | 减少 | 什么时候用 |
+| :---: | :---: | :---: | :---: | --- |
+| 1600 px | 85 | 36.7 MB | **64.0%** | 原图本身就大（默认） |
+| 1000 px | 80 | 22.9 MB | **77.4%** | 想明显变小，画质几乎不动 |
+| **800 px** | **72** | **14.9 MB** | **85.3%** | **手机看书的甜点档** |
+| 600 px | 60 | 9.1 MB | **91.1%** | 只求塞得进手机 |
+
+> 同一本 101.69 MB 的书实测，每次完整重打包 + 跑完自检。注意第一行：**默认参数什么都不用改，先省 64%**。
+
+### 那为什么有的书只降 7%？
+
+因为**原图早就被人压过了**。看两本真书：
+
+|  | 网页优化过的书 | 没压过的书 |
+| --- | --- | --- |
+| 平均单张 | 142 KB | 228 KB |
+| 最长边 | 1080 px | 832 px |
+| 原图质量 | 被压到 q80 左右 | 接近原画 |
+| 默认参数能降 | **7.7%** | **64.6%** |
+
+这里有个反直觉的点：**像素少的那个反而更占地方**。832 px 那张是"高码率小图"（一张 228 KB），1080 px 那张是"低码率大图"（只有 142 KB）。**决定体积的是码率，不是尺寸。**
+
+所以这套工具判断一张图值不值得压，看的是"压完会不会变小"，不是"像素超没超标"。已经压到极限的图，它会原样留着，不糊你的眼睛。
+
+### 遇到压不动的书怎么办
+
+把最长边往下调。手机屏正文区实际只有 400~500 像素宽，**800 px 的插图还留着两倍余量**，不放大到全屏基本看不出差别。上面那本 101 MB 的书调到 800 px，直接落到 14.9 MB。
+
+### 那"几百 MB 变几十 MB"是怎么做到的
+
+三种，都不神奇：
+
+1. **原图本来就大** —— 3000 px 的 PNG 原画降到 1600 px 的 JPEG，天然省 80%，画质几乎看不出来
+2. **参数压得狠** —— 直接砍到 600 px 甚至更低，放大能看出糊
+3. **把图删了** —— 有些在线工具只留文字层，几个 G 立刻变几 MB，代价是插图全没了
+
+这个工具默认走第一条，第二条给你滑块自己选，**第三条不干** —— 删图不叫压缩，那叫把书拆了卖废纸。
+
+---
+
+## 👀 预览这块，是真能看清楚
+
+### 同一章，处理前 vs 处理后
+
+两张都是**同一个阅读器、同一个「阅读样式」、同一章**。差别只来自段落结构本身，不是换了个好看的主题骗你。
+
+<table>
+<tr>
+<td width="50%" align="center">
+
+**❌ 原书**
+
+<img src="docs/images/demo-13-before.png">
+
+一句话就是一段，段间空出小半行，**没有首行缩进**。眼睛读两句就要往下跳一次
+
+</td>
+<td width="50%" align="center">
+
+**✅ 处理后**
+
+<img src="docs/images/demo-12-after.png">
+
+短句接成整段，**2em 首行缩进**，行高 1.9。同样一屏，读起来是连贯的
+
+</td>
+</tr>
+</table>
+
+原书那 56597 个碎段，被合并掉 14426 个：**对话仍然一句一段**（该断的地方断），**叙述接成正常段落**（该连的地方连）。不是无脑合并，引号开头的段一个都没动。
+
+处理前后正文字数 1024130 → 1024182，多出来的几十个字是补上的章节标题。**排版可以动，正文一个字不能动。**
+
+切换方式就在阅读器右上角：`回原书对照` 一键切回去，**还停在同一章同一位置**，样式也保持不变。
+
+### 图片浏览：438 张，一张不落
+
+![图片浏览](docs/images/demo-9-gallery.png)
+
+每张图下面都标着：**文件名 · 原始尺寸 · 体积 · 格式 · 被哪一章引用**。
+
+- 可以按尺寸排序，一眼看出哪几张是"体积大户"
+- 可以搜文件名
+- 可以勾「只看正文引用」，把没用到的一键筛出来
+
+顶部汇总：`438 张图片 · 438 张被引用 · 0 张未被引用 · 合计 97.68 MB`
+
+### 点开看大图
+
+![大图查看](docs/images/demo-10-lightbox.png)
+
+`img_0009.jpg` · `832×1216` · `211.2 KB` · `JPG` · `正文引用` · `第 77 章：考试期间 (7)` · `第 10 / 438 张`
+
+支持适应窗口 / 原始尺寸 / 自由缩放 / 上下张翻页。处理过的图还能点 **「对比原图」**，左右并排看画质差多少——**压得太狠就调回去重来，不用靠猜。**
+
+---
+
+## 🔍 处理前后，到底改了什么
+
+拿上面那本书举例，逐项对：
+
+| | 原书 | 处理后 |
+| --- | --- | --- |
+| **体积** | 101.69 MB | **35.95 MB（−64.6%）** |
+| **OPF 版本** | 声明 EPUB 3.0，**却没有 nav 文档**（残缺的 3.0） | 按选择重建为 EPUB 2.0 完整结构 |
+| **manifest** | 325 条，包里却有 770 个文件<br>→ **438 张图几乎全没登记** | 597 条，一个不漏 |
+| **图片** | 438 个 / 97.68 MB | 272 个 / 34.17 MB<br>（清掉 166 个完全重复的，省 20.56 MB） |
+| **正文结构** | 56597 段"一句话一段" | 50872 段，合并掉 14426 个碎段 |
+| **目录** | 只有 NCX | NCX（EPUB 2）或 NCX + nav（EPUB 3），323 章全通 |
+| **排版** | 无缩进、碎段、段间大空行 | 2em 缩进、成段、行高 1.9 |
+| **mimetype** | 位置不确定 | 强制首条、不压缩 |
+
+> 📌 这就是为什么它修完的书在手机上「突然能看了」——不是玄学，是 438 个未登记的引用被补上了。
+
+---
+
+## 📗 EPUB 2 还是 EPUB 3？
+
+这个问题问的人最多，直接上表：
+
+| | **EPUB 2.0** | **EPUB 3.0** |
+| --- | --- | --- |
+| 诞生 | 2007 年 | 2014 年 |
+| 目录 | NCX 文件 | nav.xhtml（可兼容 NCX） |
+| 排版能力 | 基础 CSS 2.1 | HTML5 + CSS3、MathML、音视频、固定版式 |
+| 阅读器支持 | **几乎所有**，十年前的设备也认 | 新阅读器认，老设备 / 老 App 可能翻白眼 |
+| 体积 | 略小 | 略大 |
+| 适合谁 | 纯文字 + 插图的**小说** | 教材、绘本、需要交互或多媒体的书 |
+
+### 👉 结论：小说就选 EPUB 2.0
+
+理由很朴素：
+
+1. **兼容性碾压。** 静读天下、掌阅、多看、Moon+ Reader、Apple Books、各种电纸书——2.0 是"闭着眼睛都能打开"的地板级标准。
+2. **3.0 多出来的能力，你看小说根本用不上。** 音视频、交互脚本、MathML 公式……一本小说要这些干嘛？反而可能让老设备犯迷糊。
+3. **省事。** 有些阅读器对 3.0 的 CSS3 支持反而不完整，字体、缩进会跑偏；2.0 的渲染路径被磨了十几年，最稳。
+
+工具默认给的是「跟原书一致」——不会擅自替你改。**如果你只想安安稳稳读完，手动点一下 EPUB 2.0 就行。**
+
+而且它不是改个版本号敷衍你：选 2 就会真的重建 OPF 版本声明、生成 NCX 目录、把章节文档类型换成 XHTML 1.1，处理完还会自检一遍。<sub>（选 3 同理，会补 nav 文档——上面那本原书就是个没 nav 的残缺 3.0。）</sub>
+
+---
+
+## 📥 下载
+
+到 **[Releases](https://github.com/virdemon/epub-master/releases)** 挑一个：
+
+| 文件 | 系统 | 怎么用 | 大小 |
+| --- | --- | --- | :---: |
+| 🖥️ `EPUB_Master_v1.2_Windows_x64_Setup.exe` | Windows 10/11 x64 | **推荐**。双击安装，自动建快捷方式，可卸载 | 68 MB |
+| 🧳 `EPUB_Master_v1.2_Windows_x64_Portable.zip` | Windows 10/11 x64 | 绿色版。解压即用，不写注册表，能塞 U 盘 | 94 MB |
+| 📱 `EPUB-Master-Android-v1.2.apk` | Android 7.0+ | 手机版，只做压缩，界面重做 | 3.2 MB |
+
+> ⚠️ 没买代码签名证书，Windows 可能提示「未知发布者」。点「更多信息 → 仍要运行」即可，源码全在这儿，可以自己审。
+>
+> 🍎 macOS：理论上 Electron 版能跑，但没打包也没测试，不提供下载。想试可以照下面的「从源码构建」自己打一个。
+
+---
+
+## 🚀 三步就能用
+
+```text
+① 下载 → ② 拖书进去 → ③ 点「开始处理」
+```
+
+真的就这三步。不用装 Node、不用配环境、不用联网。
+
+<details>
+<summary><b>想微调？展开看每个选项管什么</b></summary>
+
+| 设置 | 默认 | 说明 |
+| --- | --- | --- |
+| 处理模式 | 深度优化 | 标准 / 深度 / 极致，三档参数完全不同，见下表 |
+| 图片最长边 | 1600 px | 只缩不放。原图更小就保持原样 |
+| 图片质量 | 84 | 80~85 是肉眼难辨的甜点区 |
+| 智能重复图片清理 | 开 | 只清确定完全相同的 |
+| 输出格式 | 跟原书 | 建议手动选 EPUB 2.0 |
+| 启用分卷 | 关 | 书太大时按章节边界拆成多个独立 EPUB |
+| 输出目录 | 下载\EPUB_Master | 原文件永远不动，结果另存 |
+
+</details>
+
+### 三档模式，参数是真的不一样
+
+| | 🟦 标准优化 | 🟪 深度优化 | 🟥 极致压缩 |
+| --- | --- | --- | --- |
+| 原书 CSS | 保留 | 替换为统一样式表 | 替换为统一样式表 |
+| 绝对单位（px/pt） | 换算成相对单位 | 换算 | 换算 |
+| 图片最长边 | 不限制 | 1600 px | 1200 px |
+| JPEG 质量 | 0.90 | 0.84 | 0.70 |
+| 内嵌字体 | 保留 | 移除 | 移除 |
+| 空段落清理 | 不做 | 做 | 做 |
+| 清理未引用资源 | 不做 | 不做 | 做 |
+| 适合 | 只想修排版 | 日常推荐 | 塞进小存储 |
+
+---
+
+## 📱 安卓版
+
+手机上只留下「压缩」这一件事。界面重新画过，不是电脑版的缩小版。
+
+<div align="center">
+
+| ① 主页 | ② 选模式 |
+|:---:|:---:|
+| <img src="docs/images/app-home.png" width="300"> | <img src="docs/images/app-config.png" width="300"> |
+| 打开就能选书，没有多余入口 | 推荐 / 高质量 / 强力，三档一句话说清 |
+
+| ③ 压缩中 | ④ 完成 |
+|:---:|:---:|
+| <img src="docs/images/app-progress.png" width="300"> | <img src="docs/images/app-done.png" width="300"> |
+| 真实进度 + 可取消，不卡界面 | 原大小 / 压缩后 / 省了多少 / 压缩率 |
+
+</div>
+
+**几个硬细节：**
+
+- 💾 保存到 `下载/EPUB Master/原文件名_compressed.epub`，文件管理器直接能看到
+- 🔐 Android 10+ 走 MediaStore 写入，**不需要存储权限**
+- 🧩 分块传输（`begin → writeChunk × N → finish`），大文件不会因单次传输超限失败
+- 🛡️ 大图按目标尺寸**降采样解码**，内存峰值降一个数量级，低配机也不闪退
+- ↩️ 系统返回键逐页后退，不会一按就退出
+- 📗 **EPUB 2.0 进就是 EPUB 2.0 出**，不碰 OPF / NCX / mimetype
+
+---
+
+## 🛠️ 从源码构建
+
+<details>
+<summary><b>展开查看构建命令</b></summary>
+
+### 网页版（零安装）
+
+```bash
+# 直接用浏览器打开
+epubfix/index.html
+```
+
+### Windows 桌面版
+
+```bash
+cd desktop
+npm install
+npx electron .
+```
+
+打包成安装程序：
+
+```bash
+python tools/build_standalone.py     # 单文件网页
+python tools/assemble_desktop.py     # 组装 Electron 运行时
+python tools/make_release.py         # 便携目录 + ZIP
+makensis installer/EPUB_Master.nsi   # NSIS 安装包
+```
+
+### 安卓版
+
+需要 JDK 21 + Android SDK。
+
+```bash
+cd mobile
+npm install
+
+# 改完前端后，重新打包原生桥接
+npx esbuild native-bridge-src.js --bundle --format=iife --target=es2017 --outfile=www/native-bridge.js
+
+npx cap sync android
+cd android && ./gradlew assembleRelease
+```
+
+产物在 `mobile/android/app/build/outputs/apk/release/`。
+
+> ⚠️ 仓库不含签名密钥（keystore）。要出正式包，请自己生成一个。
+
+### 跑测试
+
+```bash
+node test/verify_compress_core.js      # 压缩引擎结构完整性
+node test/verify_browser_compress.js   # 图片压缩真实效果（需要 Chromium）
+node test/verify_chunk_transfer.js     # 分块传输字节完整性
+node test/verify_e2e.js                # 安卓端完整流程
+```
+
+</details>
+
+---
+
+## 📂 项目结构
+
+```
+epubfix/                电脑版网页应用
+  index.html            界面
+  app.js                交互层
+  style.css             样式
+  src/core.js           EPUB 处理引擎（约 5000 行，纯 JS）
+  vendor/fflate.js      ZIP 处理
+
+desktop/                Electron 桌面壳
+installer/              Windows 安装程序（NSIS）
+
+mobile/                 安卓版（Capacitor 8）
+  www/                  前端资源
+  native-bridge-src.js  原生桥接源码
+  android/              Android 工程
+    app/src/main/java/com/epubmaster/app/
+      MainActivity.java          返回键拦截 + 插件注册
+      DownloadSaverPlugin.java   MediaStore 分块写入插件
+
+docs/images/            README 配图
+tools/                  造样书、打包、截图等脚本
+test/                   回归测试
+```
+
+---
+
+## ❓ 常见问题
+
+<details>
+<summary><b>处理后的书会变形吗？章节会丢吗？</b></summary>
+
+不会。引擎不删章节、不改正文文字、不动 OPF/NCX 结构。它只做三件事：换图片字节、调整 CSS、修复确实坏掉的引用。
+
+每次处理完都会重新解析输出文件，逐章比对字数——上面那个演示里，1361446 字进、1361575 字出，多出来的 129 个字符是重建段落时补的换行符位置差异，正文一个字没少。
+</details>
+
+<details>
+<summary><b>原文件会被覆盖吗？</b></summary>
+
+绝对不会。原始 EPUB 全程只读，所有处理在临时副本上完成，输出另存为新文件。
+</details>
+
+<details>
+<summary><b>为什么处理完文本反而变大了？</b></summary>
+
+因为原书段落是靠 `<br>` 硬排的，重建标准 `<p>` 段落会多占一点字节。用几 MB 换一个能读的排版，通常很划算——而且体积的大头从来都是图片。
+</details>
+
+<details>
+<summary><b>带 DRM 的加密书能用吗？</b></summary>
+
+不能。DRM 加密的书会被跳过，这是设计如此。
+</details>
+
+<details>
+<summary><b>会上传我的书吗？</b></summary>
+
+不会。整个软件没有一行联网代码。断网状态下功能完全正常。网页版双击 `index.html` 就在本地跑，连服务器都没有。
+</details>
+
+<details>
+<summary><b>手机上功能怎么少了那么多？</b></summary>
+
+故意的。手机屏幕就这么大，把十几个功能塞进去只会让人找不到该点哪儿。手机端只做「选书 → 选档 → 压缩 → 保存」四步，专治"文件太大发不出去"。要排版、转格式、分卷，用电脑版。
+</details>
+
+---
+
+## 💖 赞助
+
+这软件从头到尾是**免费、开源、无广告、无内购**的，也没有任何联网功能。
+
+如果它帮你省下了几个晚上的折腾，或者让你终于在手机上读完了一本一直打不开的书，可以请作者喝杯咖啡 ☕
+
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <b>💚 微信支付</b><br><br>
+      <img src="docs/images/sponsor-wechat.png" width="260" alt="微信收款码"><br>
+      <sub>打开微信 →「扫一扫」</sub>
+    </td>
+    <td align="center" width="50%">
+      <b>💙 支付宝</b><br><br>
+      <img src="docs/images/sponsor-alipay.jpg" width="260" alt="支付宝收款码"><br>
+      <sub>打开支付宝 →「扫一扫」</sub>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+> 赞助**完全自愿**，不影响任何功能。不赞助也照样用得舒舒服服。
+>
+> 也欢迎赞助时留句话，告诉我你用它处理了什么书、还缺什么功能。
+
+不想花钱的话，也有更实在的支持方式：
+
+- ⭐ 点个 **Star**，让更多同样头疼的人搜得到
+- 🐛 遇到问题开个 [Issue](../../issues)，附上书的特征（多少章、多少图、多大）
+- 📢 推荐给同样被 EPUB 体积困扰的朋友
+
+---
+
+## 📄 许可
+
+[MIT](LICENSE) —— 随便用、随便改、随便分发。
+
+<div align="center">
+
+**如果这个工具帮到了你，点个 ⭐ 就是最好的鼓励**
+
+</div>
