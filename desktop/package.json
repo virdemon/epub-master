@@ -1,0 +1,10 @@
+{
+  "name": "epub-master",
+  "productName": "EPUB Master",
+  "version": "1.0.0",
+  "description": "EPUB 排版与压缩大师：保留原始排版，把体积压到目标以内，必要时按章节自动分卷",
+  "main": "main.js",
+  "author": "epubfix",
+  "license": "MIT",
+  "private": true
+}

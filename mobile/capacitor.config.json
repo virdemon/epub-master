@@ -1,0 +1,11 @@
+{
+  "appId": "com.epubmaster.app",
+  "appName": "EPUB Master",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}

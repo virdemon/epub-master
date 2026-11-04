@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#ffffff" />
+<title>EPUB 压缩大师</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ 页面一：主页 ============ -->
+<section class="screen" id="screen-home">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h7"/></svg>
+      </div>
+      <span class="brand-name">EPUB 压缩大师</span>
+    </div>
+    <button class="icon-btn" id="btn-info" type="button" aria-label="关于">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+    </button>
+  </header>
+
+  <div class="home-body">
+    <div class="hero-illustration">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <path d="M30 100a12 12 0 0 1 12-12h36a12 12 0 0 1 12 12z" fill="#e8f1ff"/>
+        <path d="M30 30a10 10 0 0 1 10-10h40a10 10 0 0 1 10 10v58a10 10 0 0 1-10 10H40a10 10 0 0 1-10-10z" fill="#ffffff" stroke="#c9dcff" stroke-width="2"/>
+        <path d="M42 34h36M42 46h36M42 58h24" stroke="#7aa5ff" stroke-width="4" stroke-linecap="round"/>
+        <path d="M78 66l-8 8 8 8" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+
+    <h1 class="hero-title">压缩 EPUB</h1>
+    <p class="hero-subtitle">缩小文件体积，尽量保留图片清晰度</p>
+
+    <button class="btn-primary" id="btn-choose" type="button">选择 EPUB 文件</button>
+
+    <ul class="feature-list">
+      <li><span class="dot"></span>原书文件只读，绝不改动</li>
+      <li><span class="dot"></span>只压缩图片，不改排版与内容</li>
+      <li><span class="dot"></span>压缩后另存为新文件</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 页面二：压缩设置页 ============ -->
+<section class="screen is-hidden" id="screen-config">
+  <header class="topbar">
+    <button class="icon-btn" id="btn-back" type="button" aria-label="返回">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <span class="topbar-title">压缩 EPUB</span>
+    <span class="topbar-spacer"></span>
+  </header>
+
+  <div class="config-body">
+    <div class="file-card">
+      <div class="file-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h7"/></svg>
+      </div>
+      <div class="file-meta">
+        <div class="file-name" id="cfg-file-name">book.epub</div>
+        <div class="file-size" id="cfg-file-size">0.0 MB</div>
+      </div>
+      <span class="file-tag" id="cfg-file-format">EPUB</span>
+    </div>
+
+    <div class="section-label">压缩模式</div>
+
+    <div class="mode-group" id="mode-group">
+      <button class="mode-card is-active" type="button" data-mode="recommended">
+        <div class="mode-card-head">
+          <span class="mode-name">推荐模式</span>
+          <span class="mode-check"></span>
+        </div>
+        <p class="mode-desc">平衡文件大小与图片清晰度</p>
+      </button>
+
+      <button class="mode-card" type="button" data-mode="high">
+        <div class="mode-card-head">
+          <span class="mode-name">高质量</span>
+          <span class="mode-check"></span>
+        </div>
+        <p class="mode-desc">尽量保持图片清晰，压缩较保守</p>
+      </button>
+
+      <button class="mode-card" type="button" data-mode="strong">
+        <div class="mode-card-head">
+          <span class="mode-name">强力压缩</span>
+          <span class="mode-check"></span>
+        </div>
+        <p class="mode-desc">更积极地减小体积，允许一定画质损失</p>
+      </button>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <button class="btn-primary" id="btn-start" type="button">开始压缩</button>
+  </div>
+</section>
+
+<!-- ============ 页面三：压缩过程 ============ -->
+<section class="screen is-hidden" id="screen-progress">
+  <div class="progress-body">
+    <div class="progress-anim" id="progress-anim">
+      <div class="ring"></div>
+      <div class="ring-core">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h7"/></svg>
+      </div>
+    </div>
+
+    <div class="progress-status" id="progress-status">正在分析 EPUB</div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="progress-stage" id="progress-stage">准备中…</div>
+  </div>
+
+  <div class="bottom-bar">
+    <button class="btn-secondary" id="btn-cancel" type="button">取消</button>
+  </div>
+</section>
+
+<!-- ============ 页面四：压缩完成 ============ -->
+<section class="screen is-hidden" id="screen-done">
+  <header class="topbar">
+    <button class="icon-btn" id="btn-done-back" type="button" aria-label="返回首页">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <span class="topbar-title">压缩完成</span>
+    <span class="topbar-spacer"></span>
+  </header>
+
+  <div class="done-body">
+    <div class="done-icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#e8f5ee"/><path d="M7.5 12.5l3 3 6-6" fill="none" stroke="#22a06b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <h1 class="done-title">压缩完成</h1>
+    <p class="done-file" id="done-file-name">book_compressed.epub</p>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <span class="result-label">原始大小</span>
+        <span class="result-value" id="done-before">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">压缩后大小</span>
+        <span class="result-value" id="done-after">—</span>
+      </div>
+      <div class="result-item result-highlight">
+        <span class="result-label">节省空间</span>
+        <span class="result-value" id="done-saved">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">压缩率</span>
+        <span class="result-value" id="done-ratio">—</span>
+      </div>
+    </div>
+
+    <p class="done-location" id="done-location">正在保存…</p>
+  </div>
+
+  <div class="bottom-bar two-btn">
+    <button class="btn-secondary" id="btn-open" type="button">打开文件</button>
+    <button class="btn-primary" id="btn-again" type="button">再压缩一本</button>
+  </div>
+</section>
+
+<!-- 关于弹层 -->
+<div class="modal" id="modal-about">
+  <div class="modal-mask" id="modal-about-mask"></div>
+  <div class="modal-sheet">
+    <div class="modal-title">关于 EPUB 压缩大师</div>
+    <p class="modal-text">轻量、简洁、快速的 EPUB 电子书压缩工具。</p>
+    <p class="modal-text">只压缩图片，不改变原书排版、章节与内容，压缩后另存为新文件。</p>
+    <p class="modal-version">版本 1.1</p>
+    <button class="btn-primary" id="btn-about-close" type="button">知道了</button>
+  </div>
+</div>
+
+<!-- 文件选择 input（隐藏） -->
+<input type="file" id="file-input" accept=".epub,application/epub+zip" hidden />
+
+<script src="vendor/fflate.js"></script>
+<script src="src/core-compress.js"></script>
+<script src="native-bridge.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
