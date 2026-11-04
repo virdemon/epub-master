@@ -340,9 +340,28 @@ test/                   回归测试
 
 如果它帮你省下了几个晚上的折腾，或者让你终于在手机上读完了一本一直打不开的书，可以请作者喝杯咖啡 ☕
 
-> 📮 支付宝 / 微信收款码：直接开个 Issue 或者发邮件联系作者获取。
->
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <b>💚 微信支付</b><br><br>
+      <img src="docs/images/sponsor-wechat.png" width="260" alt="微信收款码"><br>
+      <sub>打开微信 →「扫一扫」</sub>
+    </td>
+    <td align="center" width="50%">
+      <b>💙 支付宝</b><br><br>
+      <img src="docs/images/sponsor-alipay.jpg" width="260" alt="支付宝收款码"><br>
+      <sub>打开支付宝 →「扫一扫」</sub>
+    </td>
+  </tr>
+</table>
+
+</div>
+
 > 赞助**完全自愿**，不影响任何功能。不赞助也照样用得舒舒服服。
+>
+> 也欢迎赞助时留句话，告诉我你用它处理了什么书、还缺什么功能。
 
 如果你不想花钱，也有更实在的支持方式：
 
