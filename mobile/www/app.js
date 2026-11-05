@@ -46,6 +46,7 @@
     fileName: '',
     fileBytes: null,      // 原始 EPUB 字节（只读，永不修改）
     mode: 'recommended',
+    dedupe: true,         // 清除重复图片
     result: null,         // { bytes, report }
     savedUri: null,
     savedPath: null,
@@ -111,6 +112,10 @@
     });
   });
 
+  on($('opt-dedupe'), 'change', function (e) {
+    state.dedupe = !!e.target.checked;
+  });
+
   /* ---------------------------------------------------------------- 压缩 */
 
   on($('btn-start'), 'click', function () {
@@ -132,6 +137,7 @@
     setTimeout(function () {
       EpubCompress.compress(state.fileBytes, {
         mode: state.mode,
+        dedupe: state.dedupe,
         shouldCancel: function () { return cancelFlag; }
       }, function (p) {
         updateProgress(p);
@@ -160,6 +166,7 @@
     var stage = '';
     switch (p.phase) {
       case 'unzip': stage = '正在解包文件…'; break;
+      case 'dedupe': stage = '正在查找重复图片'; break;
       case 'compress': stage = '逐张压缩图片'; break;
       case 'rewrite': stage = '更新引用关系'; break;
       case 'pack': stage = '正在生成新文件'; break;
@@ -199,6 +206,16 @@
     $('done-saved').textContent = (saved >= 0 ? '-' : '+') + fmtBytes(Math.abs(saved));
     $('done-ratio').textContent =
       rep.inputBytes > 0 ? Math.round((saved / rep.inputBytes) * 1000) / 10 + '%' : '—';
+
+    var dd = $('done-dedupe');
+    if (dd) {
+      if (rep.dupRemoved > 0) {
+        dd.textContent = '清掉 ' + rep.dupRemoved + ' 个重复图片，省下 ' + fmtBytes(rep.dupSavedBytes);
+        dd.classList.remove('is-hidden');
+      } else {
+        dd.classList.add('is-hidden');
+      }
+    }
 
     $('done-location').textContent = '正在保存到手机…';
 

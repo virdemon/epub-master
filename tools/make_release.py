@@ -9,7 +9,7 @@
 
 产物：
   release/EPUB_Master_Portable/
-  release/EPUB_Master_v1.2_Windows_x64_Portable.zip
+  release/EPUB_Master_v1.3_Windows_x64_Portable.zip
 """
 
 import os
@@ -27,7 +27,7 @@ NAME = "EPUB_Master_Portable"
 # 万一 release/ 里已经有同名残留（被别的进程占用删不掉）也不会污染产物
 OUT = os.path.join(REL, "portable", NAME)
 EXE = "EPUB Master.exe"
-VERSION = "1.2"
+VERSION = "1.3"
 ZIP_NAME = "EPUB_Master_v%s_Windows_x64_Portable.zip" % VERSION
 
 # Electron 在 Windows 上真正必需的运行文件：缺一个都会白屏或直接起不来

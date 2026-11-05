@@ -51,3 +51,8 @@ desktop.ini
 test/ratio_out/
 test/demo_out/
 test/preview/
+test/shots/
+test/icon/
+test/apkcheck/
+test/dl/
+*.apk

@@ -95,6 +95,19 @@
         <p class="mode-desc">更积极地减小体积，允许一定画质损失</p>
       </button>
     </div>
+
+    <div class="section-label" style="margin-top:22px">附加处理</div>
+
+    <label class="opt-row" for="opt-dedupe">
+      <div class="opt-text">
+        <div class="opt-name">清除重复图片</div>
+        <div class="opt-desc">同一张图存了好几份的，只保留一份并自动修正引用</div>
+      </div>
+      <span class="switch">
+        <input type="checkbox" id="opt-dedupe" checked />
+        <span class="switch-track"><span class="switch-dot"></span></span>
+      </span>
+    </label>
   </div>
 
   <div class="bottom-bar">
@@ -164,6 +177,7 @@
     </div>
 
     <p class="done-location" id="done-location">正在保存…</p>
+    <p class="done-dedupe is-hidden" id="done-dedupe"></p>
   </div>
 
   <div class="bottom-bar two-btn">

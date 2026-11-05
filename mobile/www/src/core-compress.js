@@ -279,6 +279,179 @@
     };
   }
 
+  /* ---------------------------------------------------------------- 重复图片 */
+
+  /*
+   * 判断重复的规则：**字节完全一样才算**。
+   * 先按文件长度分桶，长度一样的再逐字节比对 —— 长度不同的绝不可能是同一张图，
+   * 所以绝大多数图连比对都不会触发，手机上也不会卡。
+   * 之所以不用"看起来像"，是因为删错图的代价远大于少删几张。
+   */
+
+  function bytesEqual(a, b) {
+    if (a === b) return true;
+    if (!a || !b || a.length !== b.length) return false;
+    for (var i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) return false;
+    }
+    return true;
+  }
+
+  function groupIdentical(files, paths) {
+    var byLen = {};
+    paths.forEach(function (p) {
+      var b = files[p];
+      if (!b || !b.length) return;
+      var key = String(b.length);
+      if (!byLen[key]) byLen[key] = [];
+      byLen[key].push(p);
+    });
+
+    var groups = [];
+    Object.keys(byLen).forEach(function (key) {
+      var list = byLen[key];
+      if (list.length < 2) return;
+      var used = {};
+      for (var i = 0; i < list.length; i++) {
+        if (used[list[i]]) continue;
+        var same = [list[i]];
+        for (var j = i + 1; j < list.length; j++) {
+          if (used[list[j]]) continue;
+          if (bytesEqual(files[list[i]], files[list[j]])) {
+            same.push(list[j]);
+            used[list[j]] = 1;
+          }
+        }
+        if (same.length > 1) groups.push({ paths: same });
+      }
+    });
+    return groups;
+  }
+
+  /* 相对路径解析：把 ref 按 baseDir 解析成包内绝对路径 */
+  function resolveRel(baseDir, ref) {
+    var clean = String(ref || '').replace(/[?#].*$/, '');
+    if (!clean) return null;
+    try { clean = decodeURIComponent(clean); } catch (e) { /* 保持原样 */ }
+    if (/^[a-z][a-z0-9+.-]*:/i.test(clean) || clean.indexOf('//') === 0) return null;
+    var parts = (baseDir ? baseDir.split('/') : []).concat(clean.split('/'));
+    var stack = [];
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      if (!p || p === '.') continue;
+      if (p === '..') { stack.pop(); continue; }
+      stack.push(p);
+    }
+    return stack.join('/');
+  }
+
+  /* 从 fromDir 出发，指向 toPath 的相对路径 */
+  function relPath(fromDir, toPath) {
+    var from = fromDir ? fromDir.split('/') : [];
+    var to = toPath.split('/');
+    var i = 0;
+    while (i < from.length && i < to.length - 1 && from[i] === to[i]) i++;
+    var up = [];
+    for (var k = i; k < from.length; k++) up.push('..');
+    return up.concat(to.slice(i)).join('/');
+  }
+
+  var TEXT_FILE = /\.(x?html?|css|opf|ncx|xml)$/i;
+
+  /* 找出封面图片的包内路径：EPUB2 的 meta name=cover + EPUB3 的 cover-image 属性 */
+  function findCoverPaths(files) {
+    var opfPath = null;
+    Object.keys(files).forEach(function (p) {
+      if (!opfPath && /\.opf$/i.test(p)) opfPath = p;
+    });
+    var out = {};
+    if (!opfPath) return out;
+    var text;
+    try { text = fflate.strFromU8(files[opfPath]); } catch (e) { return out; }
+    var opfDir = dirname(opfPath);
+    var idToHref = {};
+    var itemRe = /<item\b[^>]*>/gi;
+    var m;
+    while ((m = itemRe.exec(text))) {
+      var tag = m[0];
+      var id = (/\sid\s*=\s*"([^"]*)"/i.exec(tag) || [])[1];
+      var href = (/\shref\s*=\s*"([^"]*)"/i.exec(tag) || [])[1];
+      if (id && href) idToHref[id] = href;
+      if (/properties\s*=\s*"[^"]*cover-image/i.test(tag) && href) {
+        var cp = resolveRel(opfDir, href);
+        if (cp) out[cp] = 1;
+      }
+    }
+    var coverMeta = /<meta\b[^>]*name\s*=\s*"cover"[^>]*>/i.exec(text);
+    if (coverMeta) {
+      var cid = (/\scontent\s*=\s*"([^"]*)"/i.exec(coverMeta[0]) || [])[1];
+      if (cid && idToHref[cid]) {
+        var p2 = resolveRel(opfDir, idToHref[cid]);
+        if (p2) out[p2] = 1;
+      }
+    }
+    return out;
+  }
+
+  /* 把正文/样式/目录里指向被删图片的引用改到保留的那一份 */
+  function rewriteRefs(files, out, renameMap, removedSet) {
+    var oldToNew = {}; // basename 兜底用
+    Object.keys(renameMap).forEach(function (oldPath) {
+      oldToNew[basename(oldPath).toLowerCase()] = basename(renameMap[oldPath]);
+    });
+
+    Object.keys(out).forEach(function (name) {
+      if (!TEXT_FILE.test(name)) return;
+      var text;
+      try { text = fflate.strFromU8(out[name]); } catch (e) { return; }
+      var dir = dirname(name);
+      var before = text;
+
+      // 1) src= / href= / xlink:href= 属性
+      text = text.replace(/(\s(?:xlink:href|href|src)\s*=\s*")([^"]*)(")/gi, function (all, open, val, close) {
+        var abs = resolveRel(dir, val);
+        if (!abs) return all;
+        var dropFrag = /[?#]/.test(val) ? val.slice(val.search(/[?#]/)) : '';
+        if (renameMap[abs]) {
+          return open + relPath(dir, renameMap[abs]) + dropFrag + close;
+        }
+        if (removedSet[abs]) return open + '' + close; // 理论上不会走到，保险
+        return all;
+      });
+
+      // 2) CSS 里的 url(...)
+      text = text.replace(/url\(\s*(['"]?)([^)'"]+)\1\s*\)/gi, function (all, q, val) {
+        var abs = resolveRel(dir, val);
+        if (!abs || !renameMap[abs]) return all;
+        return 'url(' + q + relPath(dir, renameMap[abs]) + q + ')';
+      });
+
+      if (text !== before) out[name] = fflate.strToU8(text);
+    });
+  }
+
+  /* 从 OPF 的 manifest 里删掉已被移除的图片条目，否则阅读器会说文件缺失 */
+  function pruneManifest(files, out, removedSet) {
+    var opfPath = null;
+    Object.keys(out).forEach(function (p) {
+      if (!opfPath && /\.opf$/i.test(p)) opfPath = p;
+    });
+    if (!opfPath || !Object.keys(removedSet).length) return;
+    var dir = dirname(opfPath);
+    var text;
+    try { text = fflate.strFromU8(out[opfPath]); } catch (e) { return; }
+
+    var changed = false;
+    text = text.replace(/<item\b[^>]*\/?>/gi, function (tag) {
+      var href = (/\shref\s*=\s*"([^"]*)"/i.exec(tag) || [])[1];
+      if (!href) return tag;
+      var abs = resolveRel(dir, href);
+      if (abs && removedSet[abs]) { changed = true; return ''; }
+      return tag;
+    });
+    if (changed) out[opfPath] = fflate.strToU8(text);
+  }
+
   /* ---------------------------------------------------------------- ZIP 打包 */
 
   var CRC_TABLE = (function () {
@@ -455,7 +628,10 @@
       imagesSkipped: 0,
       savedBytes: 0,
       savedRatio: 0,
-      epubVersion: ''
+      epubVersion: '',
+      dupGroups: 0,
+      dupRemoved: 0,
+      dupSavedBytes: 0
     };
 
     progress('unzip', '正在解包 EPUB', 0.03);
@@ -482,6 +658,37 @@
     });
     report.imagesTotal = imagePaths.length;
     report.epubVersion = detectEpubVersion(files);
+
+    /* --- 先去重，再压缩：重复的直接不压，省时间也省电 --- */
+    var removedSet = {};
+    var renameMap = {};
+    if (opts.dedupe !== false && imagePaths.length > 1) {
+      progress('dedupe', '正在查找重复图片', 0.06);
+      var covers = findCoverPaths(files);
+      var groups = groupIdentical(files, imagePaths);
+      report.dupGroups = groups.length;
+      checkCancel();
+
+      groups.forEach(function (g) {
+        // 封面永远留下，用它当保留的那一份
+        var keep = g.paths[0];
+        for (var gi = 0; gi < g.paths.length; gi++) {
+          if (covers[g.paths[gi]]) { keep = g.paths[gi]; break; }
+        }
+        g.paths.forEach(function (p) {
+          if (p === keep) return;
+          renameMap[p] = keep;
+          removedSet[p] = 1;
+          report.dupRemoved++;
+          report.dupSavedBytes += files[p].length;
+        });
+      });
+
+      if (report.dupRemoved) {
+        imagePaths = imagePaths.filter(function (p) { return !removedSet[p]; });
+        report.imagesTotal = imagePaths.length;
+      }
+    }
 
     progress('compress', '正在压缩图片', 0.1);
     var out = {};
@@ -518,17 +725,21 @@
     // 更新引用：图片扩展名可能变化（png→jpg），需要同步 XHTML/CSS 里的引用
     progress('rewrite', '正在更新引用', 0.85);
     Object.keys(files).forEach(function (name) {
-      var value = files[name];
-      // 先应用压缩结果
+      if (removedSet[name]) return; // 被判为重复的，直接不进新包
       if (changed[name]) {
-        value = changed[name].bytes;
-      } else if (name === 'mimetype' || name.indexOf('META-INF/') === 0) {
-        value = files[name];
+        out[name] = changed[name].bytes;
       } else {
-        value = files[name];
+        out[name] = files[name];
       }
-      out[name] = value;
     });
+
+    // 指向被删图片的引用改到保留的那一份，并从 manifest 摘掉对应条目
+    // 顺序不能反：先摘 manifest，再改引用。反了的话 manifest 里那条指向重复图的
+    // href 已经被改写，就认不出来该删哪一条，最后会留下两条指向同一个文件的条目。
+    if (report.dupRemoved) {
+      pruneManifest(files, out, removedSet);
+      rewriteRefs(files, out, renameMap, removedSet);
+    }
 
     // 修正改扩展名后的引用（.png → .jpg）
     var renames = {};
@@ -584,6 +795,7 @@
 
   return {
     MODES: MODES,
-    compress: compress
+    compress: compress,
+    _internals: { groupIdentical: groupIdentical, resolveRel: resolveRel, relPath: relPath }
   };
 });

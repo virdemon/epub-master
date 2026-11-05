@@ -20,8 +20,8 @@ SetCompressorDictSize 64
 
 !define APP_NAME        "EPUB Master"
 !define APP_NAME_CN     "EPUB 排版与压缩大师"
-!define APP_VER         "1.2"
-!define APP_VER4        "1.2.0.0"
+!define APP_VER         "1.3"
+!define APP_VER4        "1.3.0.0"
 !define APP_PUBLISHER   "virdemon"
 !define APP_EXE         "EPUB Master.exe"
 !define APP_ID          "EPUBMaster"

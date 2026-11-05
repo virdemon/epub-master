@@ -2634,6 +2634,7 @@
     svg: ['SVG 检查', '列出所有 SVG 资源并做无损精简。'],
     structure: ['结构检查与修复', '检查 ZIP、容器、OPF、spine、引用与 XML 良构性。'],
     meta: ['元数据编辑', '只改 OPF 里的 dc:* 字段，其余字节保持不变。'],
+    replace: ['文字查找替换', '批量改角色名、错别字、译名。只替换正文文本，标签、属性、文件名一律不动。'],
     cover: ['封面提取', '把书里的封面原图导出成独立图片文件，EPUB 本身不做任何改动。']
   };
 
@@ -2669,6 +2670,7 @@
         if (tool === 'images') return toolImages(buf, out);
         if (tool === 'svg') return toolSvg(buf, out);
         if (tool === 'meta') return toolMeta(buf, out, f);
+        if (tool === 'replace') return toolReplace(buf, out, f);
         if (tool === 'cover') return toolCover(buf, out, f);
       } catch (e) {
         out.innerHTML = '<div class="warn-item is-error">' + esc(e.message) + '</div>';
@@ -2876,6 +2878,125 @@
       b.textContent = '保存为新文件';
     };
     mf.appendChild(b);
+  }
+
+  /* 文字查找替换：改角色名、错别字、译名。
+     只替换标签外的正文文本，id/class/href/样式表和脚本里的同名字串一律不动。 */
+  async function toolReplace(buf, out, file) {
+    out.innerHTML = '<div class="form-grid">' +
+      '<div class="form-item"><label>查找内容</label>' +
+      '<input class="input" id="repFind" placeholder="例如：李小明" /></div>' +
+      '<div class="form-item"><label>替换为</label>' +
+      '<input class="input" id="repTo" placeholder="例如：李霄" /></div>' +
+      '<div class="full form-item"><label>选项</label>' +
+      '<label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2)">' +
+      '<input type="checkbox" id="repCase" /> 区分大小写（中文一般不用勾）</label>' +
+      '<label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);margin-top:6px">' +
+      '<input type="checkbox" id="repToc" checked /> 同时更新目录标题与书名</label>' +
+      '</div>' +
+      '</div>' +
+      '<div id="repResult" style="margin-top:12px"></div>' +
+      '<p style="margin-top:10px;color:#6b7a94;font-size:12px">' +
+      '只替换正文里的文字。id、class、链接地址、样式表和脚本里出现同样的字不会被改动，' +
+      '所以改名字不会把书改坏。</p>';
+
+    var mf = $('modalFoot');
+    mf.innerHTML = '';
+
+    var scanBtn = document.createElement('button');
+    scanBtn.className = 'btn-ghost';
+    scanBtn.textContent = '先查一查';
+    mf.appendChild(scanBtn);
+
+    var runBtn = document.createElement('button');
+    runBtn.className = 'btn-primary';
+    runBtn.textContent = '全部替换并保存';
+    mf.appendChild(runBtn);
+
+    function opts() {
+      return {
+        find: $('repFind').value,
+        replace: $('repTo').value,
+        matchCase: $('repCase').checked,
+        scope: $('repToc').checked ? 'all' : 'body'
+      };
+    }
+
+    function repList(files) {
+      if (!files.length) return '';
+      var rows = files.slice(0, 12).map(function (f) {
+        return '<div class="issue issue-info"><span class="issue-lv">' + f.count + ' 处</span>' +
+          '<span class="issue-msg">' + esc(f.path) + '</span></div>';
+      }).join('');
+      var more = files.length > 12
+        ? '<p style="font-size:12px;color:#6b7a94;margin-top:6px">另有 ' + (files.length - 12) + ' 个文件也有命中</p>'
+        : '';
+      return '<div class="issue-list" style="margin-top:10px">' + rows + '</div>' + more;
+    }
+
+    scanBtn.onclick = async function () {
+      var o = opts();
+      var res = $('repResult');
+      if (!o.find) { res.innerHTML = '<div class="warn-item">先填要查找的内容。</div>'; return; }
+      scanBtn.disabled = true;
+      scanBtn.textContent = '查找中…';
+      try {
+        var r = await EpubFix.findText(buf, o);
+        if (!r.total && !r.splitHits) {
+          res.innerHTML = '<div class="warn-item">没找到「' + esc(o.find) + '」，书里没有这个字符串。</div>';
+        } else {
+          var html = '<div class="warn-item is-info">找到 <b>' + r.total + '</b> 处，分布在 ' +
+            r.fileCount + ' 个文件里。</div>';
+          if (r.samples.length) {
+            html += '<div class="issue-list" style="margin-top:10px">' +
+              r.samples.map(function (s) {
+                return '<div class="issue issue-info"><span class="issue-lv">原文</span>' +
+                  '<span class="issue-msg">' + esc(s.text) + '</span></div>';
+              }).join('') + '</div>';
+          }
+          html += repList(r.files);
+          if (r.splitHits) {
+            html += '<div class="warn-item" style="margin-top:10px">' +
+              '还有 <b>' + r.splitHits + '</b> 处被标签拆开了（比如 <span>李</span>小明），' +
+              '这种情况换不到，需要你手动处理。</div>';
+          }
+          res.innerHTML = html;
+        }
+      } catch (e) {
+        res.innerHTML = '<div class="warn-item is-error">查找失败：' + esc(e.message) + '</div>';
+      }
+      scanBtn.disabled = false;
+      scanBtn.textContent = '先查一查';
+    };
+
+    runBtn.onclick = async function () {
+      var o = opts();
+      var res = $('repResult');
+      if (!o.find) { res.innerHTML = '<div class="warn-item">先填要查找的内容。</div>'; return; }
+      runBtn.disabled = true;
+      runBtn.textContent = '替换中…';
+      try {
+        var r = await EpubFix.replaceText(buf, o);
+        if (!r.total) {
+          res.innerHTML = '<div class="warn-item">没有可替换的内容，未生成文件。</div>';
+        } else {
+          var name = file.name.replace(/\.epub$/i, '') + '_已替换.epub';
+          downloadBlob(new Blob([r.bytes], { type: 'application/epub+zip' }), name);
+          var html = '<div class="warn-item is-info">已替换 <b>' + r.total + '</b> 处，涉及 ' +
+            r.fileCount + ' 个文件，生成 ' + esc(name) + '（' + fmtBytes(r.bytes.length) + '）</div>';
+          html += repList(r.files);
+          if (r.splitHits) {
+            html += '<div class="warn-item" style="margin-top:10px">注意：还有 <b>' + r.splitHits +
+              '</b> 处被标签拆开的名字没换到。</div>';
+          }
+          res.innerHTML = html;
+        }
+      } catch (e) {
+        res.innerHTML = '<div class="warn-item is-error">替换失败：' + esc(e.message) + '</div>';
+      }
+      runBtn.disabled = false;
+      runBtn.textContent = '全部替换并保存';
+    };
   }
 
   async function toolCover(buf, out, file) {

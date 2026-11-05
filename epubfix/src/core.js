@@ -4450,6 +4450,201 @@
     return { bytes: packed, changed: changed };
   }
 
+  /* ------------------------------------------------ 文字查找 / 替换
+
+     场景：想给书里某个角色换个名字。
+
+     关键点：**只在标签外的正文里替换**。href、id、class、文件名里出现同样的字
+     一律不碰，否则改个名字整本书的图片和锚点全断。
+     实现方式是逐段切分原始标记，而不是把文件解析成 DOM 再序列化 ——
+     序列化会丢掉命名空间前缀和原始属性顺序，为了改两个字把整章重写一遍不值得。 */
+
+  var REPLACE_SCAN_RE = /\.(x?html?|ncx|opf)$/i;
+
+  function escRegSource(s) {
+    return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function makeFindReg(find, matchCase) {
+    return new RegExp(escRegSource(find), matchCase ? 'g' : 'gi');
+  }
+
+  function escReplaceText(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  /* 把标记切成 [标签, 文本, 标签, 文本…]，对文本部分跑 replace。
+     fn 收到纯文本片段，返回替换后的片段和命中数。 */
+  function mapMarkupText(raw, fn) {
+    var out = '';
+    var last = 0;
+    var hits = 0;
+    var tagRe = /<[^>]*>/g;
+    var m;
+    var skipUntil = null; // 落在 <style>/<script> 里时整段跳过
+
+    while ((m = tagRe.exec(raw))) {
+      var seg = raw.slice(last, m.index);
+      var tag = m[0];
+      var lower = tag.toLowerCase();
+
+      if (skipUntil) {
+        // 正在跳过脚本/样式，检查是不是结束标签
+        if (lower.indexOf('</' + skipUntil) === 0) skipUntil = null;
+        out += seg + tag;
+      } else if (/^<(script|style)\b/.test(lower)) {
+        var selfClosed = /\/>$/.test(lower);
+        if (!selfClosed) skipUntil = lower.indexOf('<script') === 0 ? 'script' : 'style';
+        out += seg + tag;
+      } else {
+        if (seg) {
+          var r = fn(seg);
+          hits += r.hits;
+          out += r.text;
+        }
+        out += tag;
+      }
+      last = tagRe.lastIndex;
+    }
+    var tail = raw.slice(last);
+    if (tail) {
+      var rt = fn(tail);
+      hits += rt.hits;
+      out += rt.text;
+    }
+    return { text: out, hits: hits };
+  }
+
+  /* 把标签剥掉后剩下的纯文本，用来判断"还有没有因为被标签拆开而漏掉的" */
+  function stripTags(raw) {
+    return raw.replace(/<(script|style)\b[\s\S]*?<\/\1\s*>/gi, ' ').replace(/<[^>]*>/g, ' ');
+  }
+
+  function unzipToMap(input) {
+    var bytes = input instanceof Uint8Array ? input : new Uint8Array(input);
+    var unzipped = fflate.unzipSync(bytes);
+    var files = {};
+    Object.keys(unzipped).forEach(function (n) {
+      if (n.charAt(n.length - 1) === '/') return;
+      files[n] = unzipped[n];
+    });
+    return { files: files, order: Object.keys(files) };
+  }
+
+  function pickTextFiles(files, scope) {
+    return Object.keys(files).filter(function (n) {
+      if (!REPLACE_SCAN_RE.test(n)) return false;
+      if (scope === 'body' && /\.(ncx|opf)$/i.test(n)) return false;
+      return true;
+    });
+  }
+
+  /* 只查不写。返回总命中、按文件的分布、还有几处被标签拆开没算进去。 */
+  async function findText(input, opts) {
+    var o = opts || {};
+    var find = String(o.find || '');
+    if (!find) return { total: 0, files: [], samples: [], splitHits: 0 };
+    var re = makeFindReg(find, o.matchCase);
+    var un = unzipToMap(input);
+    var list = pickTextFiles(un.files, o.scope);
+    var total = 0;
+    var splitHits = 0;
+    var files = [];
+    var samples = [];
+
+    list.forEach(function (n) {
+      var raw = fflate.strFromU8(un.files[n]);
+      var res = mapMarkupText(raw, function (seg) {
+        var c = 0;
+        seg.replace(re, function () { c++; return ''; });
+        return { text: seg, hits: c };
+      });
+      // 标签剥掉后还能找到，但逐段替换里没算到的，就是跨标签的
+      var flat = stripTags(raw);
+      var flatCount = 0;
+      flat.replace(makeFindReg(find, o.matchCase), function () { flatCount++; return ''; });
+      var cross = Math.max(0, flatCount - res.hits);
+      splitHits += cross;
+
+      if (res.hits || cross) {
+        files.push({ path: n, count: res.hits, split: cross });
+        total += res.hits;
+        if (samples.length < 6) {
+          var text = flat.replace(/\s+/g, ' ').trim();
+          var idx = text.toLowerCase().indexOf(find.toLowerCase());
+          if (idx >= 0) {
+            samples.push({
+              path: n,
+              text: (idx > 24 ? '…' : '') + text.slice(Math.max(0, idx - 24), idx + find.length + 24) + '…'
+            });
+          }
+        }
+      }
+    });
+
+    files.sort(function (a, b) { return b.count - a.count; });
+    return { total: total, files: files, samples: samples, splitHits: splitHits, fileCount: files.length };
+  }
+
+  /* 真的替换并重新打包。返回新的 EPUB 字节。 */
+  async function replaceText(input, opts) {
+    var o = opts || {};
+    var find = String(o.find || '');
+    if (!find) throw new Error('要替换的文字不能为空');
+    var replRaw = String(o.replace == null ? '' : o.replace);
+    var repl = escReplaceText(replRaw);
+    var re = makeFindReg(find, o.matchCase);
+    var un = unzipToMap(input);
+    var list = pickTextFiles(un.files, o.scope);
+    var total = 0;
+    var files = [];
+    var splitHits = 0;
+
+    list.forEach(function (n) {
+      var raw = fflate.strFromU8(un.files[n]);
+      var res = mapMarkupText(raw, function (seg) {
+        var c = 0;
+        var text = seg.replace(re, function () { c++; return repl; });
+        return { text: text, hits: c };
+      });
+      if (!res.hits) return;
+      un.files[n] = fflate.strToU8(res.text);
+      total += res.hits;
+      files.push({ path: n, count: res.hits });
+
+      var flat = stripTags(res.text);
+      var flatCount = 0;
+      flat.replace(makeFindReg(find, o.matchCase), function () { flatCount++; return ''; });
+      // 替换完还能剥掉标签找到，说明这几处被标签拆开了（如 <span>小</span>明）
+      splitHits += flatCount;
+    });
+
+    files.sort(function (a, b) { return b.count - a.count; });
+
+    var entries = [];
+    entries.push({ name: 'mimetype', data: fflate.strToU8('application/epub+zip'), store: true });
+    un.order.forEach(function (n) {
+      if (n === 'mimetype') return;
+      entries.push({
+        name: n,
+        data: un.files[n],
+        store: /\.(jpe?g|png|gif|webp|mp3|mp4|m4a|zip|otf|ttf|woff2?)$/i.test(n)
+      });
+    });
+
+    var packed = await buildZip(entries);
+    return {
+      bytes: packed,
+      total: total,
+      files: files,
+      fileCount: files.length,
+      splitHits: splitHits
+    };
+  }
+
   /* 只精简 SVG，其他文件一个字节都不动。
      opts.dropUnused = true 时，把正文和样式表都没引用的 SVG 从包里删掉。 */
   async function optimizeSvgs(input, opts) {
@@ -5055,6 +5250,8 @@
     imageSize: imageSize,
     closeBook: closeBook,
     editMetadata: editMetadata,
+    findText: findText,
+    replaceText: replaceText,
     optimizeSvgs: optimizeSvgs,
     scanAssets: scanAssets,
     minifySvg: minifySvg,
