@@ -340,7 +340,7 @@
 | 文件 | 系统 | 怎么用 | 大小 |
 | --- | --- | --- | :---: |
 | 🧳 `EPUB_Master_v1.3_Windows_x64_Portable.zip` | Windows 10/11 x64 | 绿色版。解压即用，不写注册表，能塞 U 盘 | 94 MB |
-| 📱 `EPUB-Master-Android-v1.3.apk` | Android 7.0+ | 手机版，压缩 + 去重，界面重做 | 3.3 MB |
+| 📱 `EPUB-Master-Android-v1.3.apk` | Android 7.0+ | 手机版，压缩 + 去重，界面重做 | 5.3 MB |
 
 > ⚠️ 没买代码签名证书，Windows 可能提示「未知发布者」。点「更多信息 → 仍要运行」即可，源码全在这儿，可以自己审。
 >
